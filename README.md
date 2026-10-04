@@ -1,1 +1,0 @@
-# Az-rbaycan-dili-Quizz
