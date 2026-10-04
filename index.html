@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Azərbaycan Dili - DİM İmtahan Quizi</title>
+<title>Azərbaycan Dili - DİM Sınaq İmtahanı</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
@@ -15,3463 +15,2428 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 body {
-    font-family: 'Inter', sans-serif;
-    min-height: 100vh;
-    color: #f8fafc;
-    overflow-x: hidden;
-
+    margin: 0;
+    font-family: 'Inter', Arial, sans-serif;
     background:
-        radial-gradient(circle at 10% 20%, rgba(99,102,241,.32), transparent 25%),
-        radial-gradient(circle at 90% 10%, rgba(236,72,153,.27), transparent 25%),
-        radial-gradient(circle at 50% 90%, rgba(16,185,129,.20), transparent 25%),
-        linear-gradient(135deg, #020617 0%, #111827 45%, #2e1065 100%);
+        radial-gradient(circle at 10% 20%, rgba(139,92,246,.18), transparent 30%),
+        radial-gradient(circle at 90% 80%, rgba(59,130,246,.16), transparent 30%),
+        #080b14;
+    color: #f8fafc;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
-/* =====================================================
-   ARXA FON
-===================================================== */
-
-.background-glow {
+body::before,
+body::after {
+    content: "";
     position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: -5;
-    overflow: hidden;
-}
-
-.glow {
-    position: absolute;
-    width: 380px;
-    height: 380px;
+    width: 350px;
+    height: 350px;
     border-radius: 50%;
     filter: blur(100px);
-    opacity: .18;
-    animation: moveGlow 12s infinite alternate ease-in-out;
+    z-index: -1;
+    animation: floatGlow 8s ease-in-out infinite alternate;
 }
-
-.glow.one {
-    background: #6366f1;
-    top: -120px;
-    left: -120px;
-}
-
-.glow.two {
-    background: #ec4899;
-    right: -120px;
-    top: 25%;
-    animation-delay: 2s;
-}
-
-.glow.three {
-    background: #10b981;
-    bottom: -150px;
-    left: 35%;
-    animation-delay: 4s;
-}
-
-.glow.four {
-    background: #f59e0b;
-    right: 25%;
-    top: 55%;
-    width: 250px;
-    height: 250px;
-    animation-delay: 6s;
-}
-
-@keyframes moveGlow {
-    from {
-        transform: translate(0,0) scale(1);
-    }
-
-    to {
-        transform: translate(80px,60px) scale(1.25);
-    }
-}
-
-/* Grid overlay */
 
 body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: -4;
-
-    background-image:
-        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
-
-    background-size: 45px 45px;
-    mask-image: linear-gradient(to bottom, black, transparent);
+    background: rgba(124,58,237,.18);
+    top: -100px;
+    left: -100px;
 }
 
-/* =====================================================
-   MEME-LƏR
-===================================================== */
+body::after {
+    background: rgba(37,99,235,.15);
+    right: -100px;
+    bottom: -100px;
+    animation-delay: 3s;
+}
 
-.meme {
-    position: fixed;
-    z-index: -1;
-    pointer-events: none;
-    user-select: none;
+@keyframes floatGlow {
+    from {
+        transform: translate(0,0);
+    }
+    to {
+        transform: translate(50px,30px);
+    }
+}
 
-    font-weight: 900;
-    color: #e9d5ff;
+.container {
+    width: min(1000px,94%);
+    margin: auto;
+}
 
-    background: rgba(15,23,42,.35);
+.glass {
+    background: rgba(15,23,42,.72);
     border: 1px solid rgba(255,255,255,.08);
-
-    padding: 7px 11px;
-    border-radius: 12px;
-
-    white-space: nowrap;
-
-    opacity: .16;
-
-    backdrop-filter: blur(4px);
-
-    animation:
-        floatMeme 9s infinite ease-in-out,
-        memeGlow 3s infinite alternate;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow: 0 20px 60px rgba(0,0,0,.3);
 }
 
-.meme.one {
-    top: 12%;
-    left: 2%;
-    transform: rotate(-8deg);
-    font-size: 20px;
+header {
+    margin: 25px 0;
+    padding: 25px;
+    border-radius: 25px;
 }
 
-.meme.two {
-    top: 39%;
-    right: 2%;
-    transform: rotate(7deg);
-    font-size: 18px;
-    animation-delay: 2s;
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
-.meme.three {
-    bottom: 18%;
-    left: 3%;
-    transform: rotate(6deg);
-    font-size: 18px;
-    animation-delay: 4s;
+.title {
+    font-size: clamp(24px,5vw,38px);
+    font-weight: 900;
+    background: linear-gradient(90deg,#c084fc,#60a5fa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.meme.four {
-    bottom: 8%;
-    right: 4%;
-    transform: rotate(-6deg);
-    font-size: 20px;
-    animation-delay: 1s;
+.subtitle {
+    color: #94a3b8;
+    margin-top: 7px;
+    font-size: 14px;
 }
 
-@keyframes floatMeme {
-
-    0%,100% {
-        transform: translateY(0) rotate(-5deg);
-    }
-
-    50% {
-        transform: translateY(-22px) rotate(5deg);
-    }
+.stats {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
-@keyframes memeGlow {
-
-    from {
-        box-shadow: 0 0 0 rgba(139,92,246,0);
-    }
-
-    to {
-        box-shadow: 0 0 25px rgba(139,92,246,.12);
-    }
-}
-
-/* =====================================================
-   HEADER MEME BANNER
-===================================================== */
-
-.meme-banner {
-    background:
-        linear-gradient(
-            135deg,
-            rgba(79,70,229,.22),
-            rgba(236,72,153,.16)
-        );
-
-    border: 1px solid rgba(129,140,248,.25);
-
-    border-radius: 14px;
-
+.stat {
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.08);
     padding: 10px 15px;
-
-    font-size: .85rem;
-    font-weight: 800;
-
-    color: #ddd6fe;
-
-    margin-bottom: 18px;
-
-    animation: bannerPulse 3s infinite alternate;
+    border-radius: 14px;
+    text-align: center;
 }
 
-@keyframes bannerPulse {
-    from {
-        box-shadow: 0 0 0 rgba(99,102,241,0);
-    }
-
-    to {
-        box-shadow: 0 0 25px rgba(99,102,241,.12);
-    }
+.stat-number {
+    font-weight: 800;
+    font-size: 18px;
 }
 
-/* =====================================================
-   WATERMARK
-===================================================== */
+.stat-label {
+    font-size: 11px;
+    color: #94a3b8;
+    margin-top: 2px;
+}
 
-.author-watermark {
-    position: fixed;
-    bottom: 16px;
-    right: 16px;
+/* İŞTİRAKÇI */
 
-    background: rgba(15,23,42,.85);
-    backdrop-filter: blur(10px);
-
-    color: white;
-    font-weight: 800;
-    font-size: .8rem;
-
-    padding: 7px 14px;
+.user-info {
+    padding: 22px;
     border-radius: 20px;
-
-    border: 1px solid rgba(255,255,255,.18);
-
-    box-shadow:
-        0 5px 20px rgba(0,0,0,.35);
-
-    z-index: 100;
+    margin-bottom: 25px;
 }
 
-/* =====================================================
-   MAIN CONTAINER
-===================================================== */
+.user-info-title {
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
 
-.main-container {
-    background: rgba(15,23,42,.88);
+.user-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
 
-    backdrop-filter: blur(22px);
+.user-input label {
+    display: block;
+    color: #cbd5e1;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 7px;
+}
 
-    border: 1px solid rgba(148,163,184,.15);
+.user-input input {
+    width: 100%;
+    padding: 13px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,.08);
+    background: rgba(255,255,255,.045);
+    color: white;
+    outline: none;
+    font-family: inherit;
+    transition: .2s;
+}
 
-    box-shadow:
-        0 25px 80px rgba(0,0,0,.4);
+.user-input input::placeholder {
+    color: #64748b;
+}
 
-    position: relative;
+.user-input input:focus {
+    border-color: rgba(139,92,246,.7);
+    background: rgba(139,92,246,.08);
+    box-shadow: 0 0 0 3px rgba(139,92,246,.08);
+}
+
+.progress-wrapper {
+    margin-top: 20px;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    color: #94a3b8;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.progress-bg {
+    height: 9px;
+    background: rgba(255,255,255,.07);
+    border-radius: 20px;
     overflow: hidden;
-}
-
-.main-container::before {
-    content: "";
-
-    position: absolute;
-    top: 0;
-    left: 10%;
-    right: 10%;
-
-    height: 2px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            #6366f1,
-            #ec4899,
-            #10b981,
-            transparent
-        );
-
-    opacity: .8;
-}
-
-/* =====================================================
-   QUESTION CARDS
-===================================================== */
-
-.question-card {
-    background:
-        linear-gradient(
-            135deg,
-            rgba(30,41,59,.68),
-            rgba(15,23,42,.72)
-        );
-
-    padding: 20px;
-
-    border-radius: 16px;
-
-    border: 1px solid rgba(71,85,105,.75);
-
-    margin-bottom: 24px;
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.12);
-
-    transition:
-        transform .25s ease,
-        border-color .25s ease,
-        box-shadow .25s ease;
-}
-
-.question-card:hover {
-    transform: translateY(-2px);
-
-    border-color:
-        rgba(99,102,241,.55);
-
-    box-shadow:
-        0 15px 35px rgba(0,0,0,.22);
-}
-
-/* =====================================================
-   OPTIONS
-===================================================== */
-
-.q-option {
-    transition:
-        .2s ease;
-
-    position: relative;
-}
-
-.q-option:hover {
-    transform: translateY(-2px);
-
-    border-color:
-        #6366f1 !important;
-
-    background-color:
-        rgba(49,46,129,.35);
-}
-
-.q-option input {
-    margin-right: 7px;
-}
-
-.option-wrong {
-    background-color:
-        #7f1d1d !important;
-
-    border-color:
-        #ef4444 !important;
-
-    color:
-        #fecaca !important;
-
-    text-decoration:
-        line-through;
-}
-
-.option-correct {
-    background-color:
-        #065f46 !important;
-
-    border-color:
-        #10b981 !important;
-
-    color:
-        #a7f3d0 !important;
-
-    font-weight:
-        700;
-
-    box-shadow:
-        0 0 20px rgba(16,185,129,.12);
-}
-
-/* =====================================================
-   TEXT BOX
-===================================================== */
-
-.text-box-style {
-    background-color:
-        #1e293b;
-
-    border:
-        1px solid #475569;
-
-    color:
-        #f8fafc;
-
-    transition:
-        border-color .2s,
-        box-shadow .2s;
-}
-
-.text-box-style::placeholder {
-    color:
-        #64748b;
-}
-
-.text-box-style:focus {
-    border-color:
-        #6366f1;
-
-    outline:
-        none;
-
-    box-shadow:
-        0 0 0 3px rgba(99,102,241,.14);
-}
-
-/* =====================================================
-   PASSAGE
-===================================================== */
-
-.text-passage {
-    background:
-        rgba(2,6,23,.9);
-
-    padding:
-        18px;
-
-    border-radius:
-        12px;
-
-    border:
-        1px solid rgba(49,46,129,.55);
-
-    color:
-        #cbd5e1;
-
-    font-size:
-        .9rem;
-
-    line-height:
-        1.8;
-
-    max-height:
-        430px;
-
-    overflow-y:
-        auto;
-
-    box-shadow:
-        inset 0 0 30px rgba(0,0,0,.15);
-}
-
-/* =====================================================
-   BADGES
-===================================================== */
-
-.badge-points {
-    background:
-        #312e81;
-
-    color:
-        #c7d2fe;
-
-    font-size:
-        .75rem;
-
-    font-weight:
-        800;
-
-    padding:
-        4px 10px;
-
-    border-radius:
-        12px;
-
-    border:
-        1px solid #6366f1;
-
-    white-space:
-        nowrap;
-}
-
-.badge-open {
-    background:
-        #4c1d95;
-
-    color:
-        #ddd6fe;
-
-    border-color:
-        #8b5cf6;
-}
-
-/* =====================================================
-   CORRECT ANSWER
-===================================================== */
-
-.correct-answer-box {
-    display:
-        none;
-
-    background:
-        linear-gradient(
-            135deg,
-            #064e3b,
-            #065f46
-        );
-
-    border:
-        1.5px solid #10b981;
-
-    color:
-        #ecfdf5;
-
-    padding:
-        12px 16px;
-
-    border-radius:
-        8px;
-
-    margin-top:
-        12px;
-
-    font-size:
-        .9rem;
-
-    animation:
-        answerAppear .35s ease;
-}
-
-@keyframes answerAppear {
-
-    from {
-        opacity: 0;
-        transform: translateY(-5px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* =====================================================
-   PROGRESS
-===================================================== */
-
-.progress-container {
-    height:
-        9px;
-
-    background:
-        #1e293b;
-
-    border-radius:
-        20px;
-
-    overflow:
-        hidden;
-
-    border:
-        1px solid rgba(255,255,255,.05);
 }
 
 .progress-bar {
-    height:
-        100%;
-
-    width:
-        0%;
-
-    background:
-        linear-gradient(
-            90deg,
-            #6366f1,
-            #ec4899,
-            #10b981
-        );
-
-    border-radius:
-        20px;
-
-    transition:
-        width .3s ease;
-
-    box-shadow:
-        0 0 15px rgba(99,102,241,.3);
+    height: 100%;
+    width: 0%;
+    border-radius: 20px;
+    background: linear-gradient(90deg,#8b5cf6,#3b82f6);
+    transition: width .3s ease;
 }
 
-/* =====================================================
-   FINISH BUTTON
-===================================================== */
+.section-title {
+    margin: 35px 0 15px;
+    font-size: 22px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-number {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg,#7c3aed,#2563eb);
+    font-weight: 900;
+}
+
+.question {
+    padding: 22px;
+    margin-bottom: 18px;
+    border-radius: 20px;
+    transition: .25s;
+}
+
+.question:hover {
+    border-color: rgba(139,92,246,.35);
+    transform: translateY(-2px);
+}
+
+.question-number {
+    color: #a78bfa;
+    font-weight: 800;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.question-text {
+    font-size: 16px;
+    line-height: 1.7;
+    font-weight: 600;
+    margin-bottom: 15px;
+    white-space: pre-line;
+}
+
+.option {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 13px 15px;
+    margin: 8px 0;
+    border-radius: 13px;
+    background: rgba(255,255,255,.035);
+    border: 1px solid rgba(255,255,255,.06);
+    cursor: pointer;
+    transition: .2s;
+    line-height: 1.5;
+}
+
+.option:hover {
+    background: rgba(139,92,246,.1);
+    border-color: rgba(139,92,246,.3);
+}
+
+.option input {
+    accent-color: #8b5cf6;
+    width: 17px;
+    height: 17px;
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.option.correct {
+    background: rgba(34,197,94,.15);
+    border-color: rgba(34,197,94,.6);
+}
+
+.option.wrong {
+    background: rgba(239,68,68,.15);
+    border-color: rgba(239,68,68,.6);
+}
+
+.explanation {
+    display: none;
+    margin-top: 14px;
+    padding: 14px;
+    border-radius: 12px;
+    background: rgba(59,130,246,.08);
+    border-left: 3px solid #60a5fa;
+    color: #cbd5e1;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.explanation.show {
+    display: block;
+}
+
+.badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: rgba(139,92,246,.13);
+    color: #c4b5fd;
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.question table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    font-size: 13px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.question th,
+.question td {
+    border: 1px solid rgba(255,255,255,.1);
+    padding: 10px;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.5;
+}
+
+.question th {
+    background: rgba(139,92,246,.12);
+    color: #c4b5fd;
+}
+
+.question td {
+    background: rgba(255,255,255,.02);
+}
+
+.poem {
+    padding: 15px;
+    margin: 12px 0;
+    border-left: 3px solid #8b5cf6;
+    background: rgba(139,92,246,.06);
+    border-radius: 10px;
+    line-height: 1.8;
+    color: #cbd5e1;
+}
 
 .finish-btn {
-    background:
-        linear-gradient(
-            135deg,
-            #059669,
-            #10b981
-        );
-
-    box-shadow:
-        0 10px 30px rgba(16,185,129,.22);
-
-    position:
-        relative;
-
-    overflow:
-        hidden;
-}
-
-.finish-btn::before {
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-    left: -100%;
-
-    width: 70%;
-    height: 100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.18),
-            transparent
-        );
-
-    transform: skewX(-20deg);
-
-    animation:
-        buttonShine 3.5s infinite;
-}
-
-@keyframes buttonShine {
-
-    0% {
-        left: -100%;
-    }
-
-    40%,100% {
-        left: 140%;
-    }
+    width: 100%;
+    border: none;
+    padding: 17px;
+    border-radius: 16px;
+    margin: 25px 0 35px;
+    font-size: 17px;
+    font-weight: 900;
+    color: white;
+    cursor: pointer;
+    background: linear-gradient(135deg,#7c3aed,#2563eb);
+    box-shadow: 0 10px 35px rgba(99,102,241,.25);
+    transition: .2s;
 }
 
 .finish-btn:hover {
-    transform:
-        translateY(-2px);
-
-    box-shadow:
-        0 15px 35px rgba(16,185,129,.35);
+    transform: translateY(-2px);
+    box-shadow: 0 15px 40px rgba(99,102,241,.35);
 }
 
-/* =====================================================
-   RESULT
-===================================================== */
+/* TARİXÇƏ */
 
-.result-card {
-    animation:
-        resultAppear .6s ease;
+.history-section {
+    padding: 25px;
+    border-radius: 22px;
+    margin: 10px 0 60px;
 }
 
-@keyframes resultAppear {
+.history-title {
+    font-size: 23px;
+    font-weight: 900;
+}
 
+.history-subtitle {
+    color: #94a3b8;
+    font-size: 13px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.history-item {
+    display: grid;
+    grid-template-columns: 40px 1.5fr 1fr 120px 100px;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    border-radius: 15px;
+    background: rgba(255,255,255,.035);
+    border: 1px solid rgba(255,255,255,.06);
+}
+
+.history-number {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg,#7c3aed,#2563eb);
+    font-weight: 800;
+    font-size: 13px;
+}
+
+.history-name {
+    font-weight: 800;
+    color: #f8fafc;
+}
+
+.history-result {
+    font-weight: 800;
+    color: #c4b5fd;
+}
+
+.history-date,
+.history-time {
+    color: #94a3b8;
+    font-size: 12px;
+}
+
+.no-history {
+    padding: 25px;
+    text-align: center;
+    color: #64748b;
+    background: rgba(255,255,255,.025);
+    border-radius: 14px;
+}
+
+/* MODAL */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(2,6,23,.82);
+    backdrop-filter: blur(10px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.result-box {
+    width: min(600px,100%);
+    padding: 30px;
+    border-radius: 25px;
+    text-align: center;
+    animation: resultIn .35s ease;
+}
+
+@keyframes resultIn {
     from {
         opacity: 0;
-        transform:
-            scale(.95)
-            translateY(20px);
+        transform: scale(.9) translateY(20px);
     }
-
     to {
         opacity: 1;
-        transform:
-            scale(1)
-            translateY(0);
+        transform: scale(1) translateY(0);
     }
 }
 
-.score-number {
-    font-size:
-        clamp(42px, 10vw, 72px);
+.result-title {
+    font-size: 30px;
+    font-weight: 900;
+    margin-bottom: 8px;
+}
 
-    font-weight:
-        900;
+.result-score {
+    font-size: 55px;
+    font-weight: 900;
+    background: linear-gradient(90deg,#c084fc,#60a5fa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
-    line-height:
-        1;
+.result-comment {
+    color: #94a3b8;
+    margin: 10px auto 25px;
+    max-width: 450px;
+    line-height: 1.6;
+}
 
-    text-shadow:
-        0 0 30px rgba(245,158,11,.2);
+.result-stats {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 10px;
+    margin-bottom: 25px;
 }
 
 .result-stat {
-    background:
-        rgba(15,23,42,.75);
-
-    border:
-        1px solid rgba(71,85,105,.7);
-
-    border-radius:
-        12px;
-
-    padding:
-        12px;
-
-    transition:
-        .2s;
+    background: rgba(255,255,255,.04);
+    padding: 15px 8px;
+    border-radius: 15px;
 }
 
-.result-stat:hover {
-    transform:
-        translateY(-2px);
-
-    border-color:
-        rgba(99,102,241,.45);
+.result-stat strong {
+    display: block;
+    font-size: 21px;
 }
 
-/* =====================================================
-   MEME RESULT
-===================================================== */
-
-.meme-result {
-    margin-top:
-        15px;
-
-    font-size:
-        1rem;
-
-    font-weight:
-        800;
-
-    color:
-        #c4b5fd;
-
-    background:
-        rgba(49,46,129,.15);
-
-    border:
-        1px solid rgba(139,92,246,.2);
-
-    border-radius:
-        12px;
-
-    padding:
-        12px;
+.result-stat span {
+    color: #94a3b8;
+    font-size: 11px;
 }
-
-/* =====================================================
-   RESTART
-===================================================== */
 
 .restart-btn {
-    background:
-        linear-gradient(
-            135deg,
-            #4f46e5,
-            #7c3aed
-        );
-
-    box-shadow:
-        0 8px 25px rgba(79,70,229,.2);
+    width: 100%;
+    border: 1px solid rgba(255,255,255,.1);
+    background: rgba(255,255,255,.06);
+    color: white;
+    padding: 14px;
+    border-radius: 14px;
+    cursor: pointer;
+    font-weight: 800;
+    transition: .2s;
 }
 
 .restart-btn:hover {
-    transform:
-        translateY(-2px);
+    background: rgba(255,255,255,.1);
 }
 
-/* =====================================================
-   SCROLLBAR
-===================================================== */
-
-::-webkit-scrollbar {
-    width:
-        9px;
+.watermark {
+    position: fixed;
+    bottom: 10px;
+    right: 15px;
+    color: rgba(255,255,255,.2);
+    font-size: 10px;
+    pointer-events: none;
 }
 
-::-webkit-scrollbar-track {
-    background:
-        #020617;
-}
+@media(max-width:700px) {
 
-::-webkit-scrollbar-thumb {
-    background:
-        #4f46e5;
-
-    border-radius:
-        20px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background:
-        #6366f1;
-}
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media (max-width: 640px) {
-
-    .meme {
-        opacity:
-            .07;
-
-        font-size:
-            13px !important;
+    .user-inputs {
+        grid-template-columns: 1fr;
     }
 
-    .question-card {
-        padding:
-            15px;
+    .history-item {
+        grid-template-columns: 35px 1fr;
     }
 
-    .author-watermark {
-        bottom:
-            8px;
-
-        right:
-            8px;
+    .history-result,
+    .history-date,
+    .history-time {
+        grid-column: 2;
     }
 
-    .text-passage {
-        font-size:
-            .85rem;
+    header {
+        padding: 20px;
+    }
 
-        line-height:
-            1.7;
+    .question {
+        padding: 17px;
+    }
+
+    .question table {
+        font-size: 11px;
+        display: block;
+        overflow-x: auto;
+    }
+
+    .question th,
+    .question td {
+        padding: 7px;
+    }
+
+    .result-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .result-score {
+        font-size: 45px;
     }
 }
 </style>
 </head>
 
-<body class="py-8 px-4 relative pb-24">
+<body>
 
-<!-- =====================================================
-     ARXA FON
-===================================================== -->
+<div class="container">
 
-<div class="background-glow">
-    <div class="glow one"></div>
-    <div class="glow two"></div>
-    <div class="glow three"></div>
-    <div class="glow four"></div>
-</div>
+<header class="glass">
 
-<!-- =====================================================
-     STATİK MEMELƏR
-===================================================== -->
+    <div class="header-top">
 
-<div class="meme one">
-    📚 30 SUAL??? Mən getdim.
-</div>
+        <div>
+            <div class="title">
+                Azərbaycan Dili və Mətn Testi
+            </div>
 
-<div class="meme two">
-    🧠 Beynim: "A seç"
-</div>
+            <div class="subtitle">
+                DİM formatında sınaq imtahanı
+            </div>
+        </div>
 
-<div class="meme three">
-    😭 bunu keçən dəfə bilirdim axı
-</div>
+        <div class="stats">
 
-<div class="meme four">
-    ☕ 1 test = 7 stəkan çay
-</div>
+            <div class="stat">
+                <div class="stat-number">20</div>
+                <div class="stat-label">Ümumi sual</div>
+            </div>
 
-<div class="author-watermark">
-    © İ.S.
-</div>
+            <div class="stat">
+                <div class="stat-number">50</div>
+                <div class="stat-label">Maksimum bal</div>
+            </div>
 
+        </div>
 
-<!-- =====================================================
-     MAIN
-===================================================== -->
+    </div>
 
-<div class="max-w-4xl mx-auto main-container rounded-2xl p-6 sm:p-10">
+    <div class="progress-wrapper">
 
+        <div class="progress-info">
+            <span>İrəliləyiş</span>
+            <span id="progressText">0 / 20</span>
+        </div>
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
+        <div class="progress-bg">
+            <div
+                class="progress-bar"
+                id="progressBar">
+            </div>
+        </div>
 
-<header class="text-center mb-8 border-b border-slate-800 pb-6">
-
-<div class="meme-banner">
-    🧠 DİM MODE: ON &nbsp; | &nbsp;
-    Beyin: <span class="text-pink-300">loading...</span>
-    &nbsp; | &nbsp;
-    Səhv: <span class="text-red-300">mümkündür</span> 💀
-</div>
-
-<span class="inline-block bg-indigo-500/10 text-indigo-400 font-semibold px-4 py-1.5 rounded-full text-xs uppercase tracking-wider mb-3 border border-indigo-500/20">
-📌 DİM proqramına uyğun Azərbaycan dili testi
-</span>
-
-<h1 class="text-2xl sm:text-4xl font-extrabold text-white tracking-wide">
-📚 Azərbaycan Dili və Mətn Testi
-</h1>
-
-<p class="text-slate-400 mt-2">
-Ümumi:
-<b class="text-indigo-400">30 sual</b>
-|
-Maksimum:
-<b class="text-amber-400">100 bal</b>
-</p>
-
-<div class="flex flex-wrap justify-center gap-4 mt-3 text-xs sm:text-sm font-medium">
-
-<span class="bg-slate-800 px-3 py-1 rounded-lg border border-slate-700">
-🔹 Qapalı: <b>2.5 bal</b>
-</span>
-
-<span class="bg-slate-800 px-3 py-1 rounded-lg border border-slate-700">
-🔸 Açıq: <b>5 bal</b>
-</span>
-
-</div>
-
-
-<!-- PROGRESS -->
-
-<div class="mt-5">
-
-<div class="flex justify-between text-xs text-slate-400 mb-2">
-
-<span>
-Test irəliləyişi
-</span>
-
-<span id="progressText">
-0 / 30
-</span>
-
-</div>
-
-<div class="progress-container">
-
-<div
-id="progressBar"
-class="progress-bar">
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </header>
 
 
-<!-- =====================================================
-     AD SOYAD
-===================================================== -->
+<!-- İŞTİRAKÇI MƏLUMATLARI -->
 
-<div class="bg-slate-800/80 p-4 sm:p-5 rounded-xl border border-slate-700 mb-8 flex flex-col sm:flex-row items-center gap-4 justify-between">
+<div class="glass user-info">
 
-<label
-for="userName"
-class="font-semibold text-slate-200">
+    <div class="user-info-title">
+        👤 İştirakçı məlumatları
+    </div>
 
-👤 Ad və Soyadınız:
+    <div class="user-inputs">
 
+        <div class="user-input">
+            <label for="firstName">Ad</label>
+
+            <input
+                type="text"
+                id="firstName"
+                placeholder="Adınızı daxil edin"
+                autocomplete="off"
+            >
+        </div>
+
+        <div class="user-input">
+            <label for="lastName">Soyad</label>
+
+            <input
+                type="text"
+                id="lastName"
+                placeholder="Soyadınızı daxil edin"
+                autocomplete="off"
+            >
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     I BÖLMƏ
+========================================================= -->
+
+<div class="section-title">
+    <div class="section-number">I</div>
+    <div>Qrammatika</div>
+</div>
+
+
+<!-- 1 -->
+
+<div class="question glass">
+
+<div class="question-number">Sual 1</div>
+<div class="badge">2.5 bal</div>
+
+<div class="question-text">
+Hansının yazılışında orfoqrafik səhv vardır?
+</div>
+
+<label class="option">
+<input type="radio" name="q1" value="A" onchange="updateProgress()">
+<span>A) səlist</span>
 </label>
 
-<input
-type="text"
-id="userName"
-placeholder="Ad və soyadınızı daxil edin..."
-class="w-full sm:w-80 px-4 py-2.5 rounded-lg text-box-style font-medium"
->
+<label class="option">
+<input type="radio" name="q1" value="B" onchange="updateProgress()">
+<span>B) sertifikat</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q1" value="C" onchange="updateProgress()">
+<span>C) bilyart</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q1" value="D" onchange="updateProgress()">
+<span>D) samovar</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q1" value="E" onchange="updateProgress()">
+<span>E) siferblat</span>
+</label>
+
+<div class="explanation" id="exp1">
+<b>Düzgün cavab: A</b><br>
+Bu sualın cavab açarı əvvəlki testdə A olaraq müəyyən edilmişdi.
+</div>
 
 </div>
 
 
-<form id="quizForm">
+<!-- 2 -->
 
-<!-- =====================================================
-     I BÖLMƏ
-===================================================== -->
+<div class="question glass">
 
-<section class="border-b border-slate-800 pb-4">
+<div class="question-number">Sual 2</div>
+<div class="badge">2.5 bal</div>
 
-<h2 class="text-xl font-bold text-indigo-400 flex items-center gap-2 mb-4">
-📖 I Bölmə: Qrammatika
-</h2>
-
-
-<!-- Q1 -->
-
-<div class="question-card">
-
-<div class="flex justify-between items-start gap-2 mb-3">
-
-<h3 class="font-bold">
-1. Cədvəldəki doğru əlaqələndirmələri müəyyən edin.
-</h3>
-
-<span class="badge-points">
-2.5 Bal
-</span>
-
+<div class="question-text">
+Sözlər əsasında cədvəldəki uyğunluğu müəyyən edin.
 </div>
 
-<div class="bg-slate-950 rounded-lg p-4 mb-4 overflow-x-auto">
-
-<table class="w-full text-sm text-left">
-
-<thead>
-
-<tr class="border-b border-slate-700">
-
-<th class="p-2">№</th>
-<th class="p-2">Söz</th>
-<th class="p-2">Leksik mənası</th>
-
-</tr>
-
-</thead>
-
-<tbody>
-
+<table>
 <tr>
-<td class="p-2">1.</td>
-<td class="p-2">ianə</td>
-<td class="p-2">qida, yeyəcək, ərzaq</td>
+<th>Sözlər</th>
+<th>Doğrudur</th>
+<th>Yanlışdır</th>
 </tr>
 
 <tr>
-<td class="p-2">2.</td>
-<td class="p-2">inventar</td>
-<td class="p-2">binanın, mənzilin memarlıq baxımından tərtibat verilmiş daxili hissəsi</td>
+<td><strong>qalmışdır</strong></td>
+<td>
+1. Yazılışı və tələffüzü arasında iki fərqli məqam var.<br>
+2. Qarşılığı olmayan üç samit var.
+</td>
+<td>
+4. İki kar samit yanaşı işlənib.
+</td>
 </tr>
 
 <tr>
-<td class="p-2">3.</td>
-<td class="p-2">irtica</td>
-<td class="p-2">geridə qalma, geriyə gedən hərəkət</td>
+<td><strong>insanlara</strong></td>
+<td>
+3. Dörd samitinin qarşılığı yoxdur.
+</td>
+<td>
+5. Tərkibində iki kar samit vardır.
+</td>
 </tr>
-
-<tr>
-<td class="p-2">4.</td>
-<td class="p-2">müsahibə</td>
-<td class="p-2">müxbirin hər hansı şəxsdən aldığı müsahibə</td>
-</tr>
-
-<tr>
-<td class="p-2">5.</td>
-<td class="p-2">ipoteka</td>
-<td class="p-2">girov qoyulmuş əmlak</td>
-</tr>
-
-</tbody>
 </table>
 
-</div>
-
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700 cursor-pointer">
-<input type="radio" name="q1" value="A">
-A) 3, 4, 5
+<label class="option">
+<input type="radio" name="q2" value="A" onchange="updateProgress()">
+<span>A) 2, 3, 4</span>
 </label>
 
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700 cursor-pointer">
-<input type="radio" name="q1" value="B">
-B) 2, 3, 4
+<label class="option">
+<input type="radio" name="q2" value="B" onchange="updateProgress()">
+<span>B) 1, 2, 5</span>
 </label>
 
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700 cursor-pointer">
-<input type="radio" name="q1" value="C">
-C) 1, 2, 5
+<label class="option">
+<input type="radio" name="q2" value="C" onchange="updateProgress()">
+<span>C) 1, 2, 3</span>
 </label>
 
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700 cursor-pointer">
-<input type="radio" name="q1" value="D">
-D) 1, 2, 3
+<label class="option">
+<input type="radio" name="q2" value="D" onchange="updateProgress()">
+<span>D) 1, 4, 5</span>
 </label>
 
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700 cursor-pointer">
-<input type="radio" name="q1" value="E">
-E) 1, 4, 5
+<label class="option">
+<input type="radio" name="q2" value="E" onchange="updateProgress()">
+<span>E) 3, 4, 5</span>
 </label>
 
-</div>
-
-<div id="exp1" class="correct-answer-box">
-Düzgün cavab: <b>A) 3, 4, 5</b>
+<div class="explanation" id="exp2">
+<b>Düzgün cavab: E</b>
 </div>
 
 </div>
 
 
-<!-- Q2 -->
+<!-- 3 -->
 
-<div class="question-card">
+<div class="question glass">
 
-<h3 class="font-bold mb-3">
-2. Sözlərin yalnız birinə aid olan fikirləri müəyyən edin:
-<i>dekorativ, duet</i>
-</h3>
+<div class="question-number">Sual 3</div>
+<div class="badge">2.5 bal</div>
 
-<div class="bg-slate-950 rounded-lg p-4 mb-4 space-y-2 text-sm">
-
-<p>1. Ahəng qanununa tabedir.</p>
-<p>2. Tərkibində dodaqlanan sait iştirak etmir.</p>
-<p>3. Tərkibində həm kar, həm də cingiltili samit var.</p>
-<p>4. Deyilişi ilə yazılışı arasında bir fərqli məqam var.</p>
-<p>5. Kar samitlə başlayır, cingiltili samitlə bitir.</p>
-
+<div class="question-text">
+Cədvələ uyğun fikirləri müəyyən edin.
 </div>
 
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+<table>
+<tr>
+<th>Eyni nitq hissəsinə aid omonimdir</th>
+<th>Müxtəlif nitq hissələrinə aid omonimdir</th>
+</tr>
 
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700 cursor-pointer">
-<input type="radio" name="q2" value="A">
-A) 1, 5
+<tr>
+<td>
+1. cır<br>
+2. oxşar<br>
+3. tam
+</td>
+
+<td>
+4. bənd<br>
+5. inci<br>
+6. çağ
+</td>
+</tr>
+</table>
+
+<label class="option">
+<input type="radio" name="q3" value="A" onchange="updateProgress()">
+<span>A) 1, 4, 5</span>
 </label>
 
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700 cursor-pointer">
-<input type="radio" name="q2" value="B">
-B) 2, 4
+<label class="option">
+<input type="radio" name="q3" value="B" onchange="updateProgress()">
+<span>B) 2, 3, 5</span>
 </label>
 
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700 cursor-pointer">
-<input type="radio" name="q2" value="C">
-C) 4, 5
+<label class="option">
+<input type="radio" name="q3" value="C" onchange="updateProgress()">
+<span>C) 2, 5, 6</span>
 </label>
 
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700 cursor-pointer">
-<input type="radio" name="q2" value="D">
-D) 1, 3
+<label class="option">
+<input type="radio" name="q3" value="D" onchange="updateProgress()">
+<span>D) 1, 3, 4, 6</span>
 </label>
 
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700 cursor-pointer">
-<input type="radio" name="q2" value="E">
-E) 2, 3
+<label class="option">
+<input type="radio" name="q3" value="E" onchange="updateProgress()">
+<span>E) 1, 2, 4, 6</span>
 </label>
 
-</div>
-
-<div id="exp2" class="correct-answer-box">
-Düzgün cavab: <b>B) 2, 4</b>
-</div>
-
-</div>
-
-
-<!-- Q3 -->
-
-<div class="question-card">
-
-<h3 class="font-bold mb-3">
-3. Tərkibində "çıxartmaq" mənasında ifadənin olmadığı nümunəni müəyyən edin.
-</h3>
-
-<div class="grid gap-2">
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q3" value="A">
-A) Şərəfoğlu torbanın ağzını açdı, oradan toz basmış bir külqabı götürdü.
-</label>
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q3" value="B">
-B) Dağların başını qalın duman bürüyür, çobanlar qoyunları kəndə tərəf qovurdu.
-</label>
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q3" value="C">
-C) Əlbəttə, dəlilsiz, sübutsuz, mühakiməsiz və məntiqsiz heç bir zaman ədalətli hökm vermək olmaz.
-</label>
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q3" value="D">
-D) C.Məmmədquluzadənin təsvirinə və sənədlərə görə o zaman Azərbaycan dilində qəzet buraxmaq çox çətin məsələ imiş.
-</label>
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q3" value="E">
-E) Oğlan əynindəki kətan köynəyi soyundu.
-</label>
-
-</div>
-
-<div id="exp3" class="correct-answer-box">
-Düzgün cavab: <b>B</b>
+<div class="explanation" id="exp3">
+<b>Düzgün cavab: C</b>
 </div>
 
 </div>
 
 
-<!-- Q4 -->
+<!-- 4 -->
 
-<div class="question-card">
+<div class="question glass">
 
-<h3 class="font-bold mb-3">
-4. Yerinə görə omonim kimi işlənə bilən sözləri müəyyən edin.
-</h3>
+<div class="question-number">Sual 4</div>
+<div class="badge">2.5 bal</div>
 
-<div class="bg-slate-950 rounded-lg p-4 mb-4">
+<div class="question-text">
+Xüsusiyyətlərin hər biri hansı sözün fonetik təhlilinə uyğundur?
 
-<ol class="list-decimal ml-5 space-y-1">
-
-<li>xeyr</li>
-<li>Xəzər</li>
-<li>kütlə</li>
-<li>şən</li>
-<li>bəstə</li>
-
-</ol>
-
+• Yazılışı və tələffüzü arasında üç fərqli məqam var.
+• Üç cingiltili, iki kar samit işlənib.
+• Ahəng qanunu gözlənilməyib.
 </div>
 
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q4" value="A">
-A) 1, 3, 4
+<label class="option">
+<input type="radio" name="q4" value="A" onchange="updateProgress()">
+<span>A) fövqəladə</span>
 </label>
 
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q4" value="B">
-B) 2, 4, 5
+<label class="option">
+<input type="radio" name="q4" value="B" onchange="updateProgress()">
+<span>B) morfologiya</span>
 </label>
 
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q4" value="C">
-C) 1, 2, 5
+<label class="option">
+<input type="radio" name="q4" value="C" onchange="updateProgress()">
+<span>C) kondisioner</span>
 </label>
 
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q4" value="D">
-D) 2, 3, 4
+<label class="option">
+<input type="radio" name="q4" value="D" onchange="updateProgress()">
+<span>D) şiddətlənmək</span>
 </label>
 
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q4" value="E">
-E) 3, 4, 5
+<label class="option">
+<input type="radio" name="q4" value="E" onchange="updateProgress()">
+<span>E) avtomobil</span>
 </label>
 
-</div>
-
-<div id="exp4" class="correct-answer-box">
-Düzgün cavab: <b>E) 3, 4, 5</b>
+<div class="explanation" id="exp4">
+<b>Düzgün cavab: E</b>
 </div>
 
 </div>
 
 
-<!-- =====================================================
-     Q5 DÜZƏLDİLDİ
-===================================================== -->
+<!-- 5 -->
 
-<div class="question-card">
+<div class="question glass">
 
-<h3 class="font-bold mb-3">
-5. Yazılışı yanlış olan sözü müəyyən edin.
-</h3>
+<div class="question-number">Sual 5</div>
+<div class="badge">2.5 bal</div>
 
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q5" value="A">
-A) aysberq
-</label>
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q5" value="B">
-B) boyanat
-</label>
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q5" value="C">
-C) qərərgah
-</label>
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q5" value="D">
-D) qatran
-</label>
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q5" value="E">
-E) batareya
-</label>
-
+<div class="question-text">
+Nümunə ilə bağlı yanlış fikri müəyyən edin.
 </div>
 
-<div id="exp5" class="correct-answer-box">
-Düzgün cavab: <b>C) qərərgah</b>
-</div>
-
-</div>
-
-
-<!-- Q6 -->
-
-<div class="question-card">
-
-<h3 class="font-bold mb-3">
-6. Əvvəlində müvafiq işarələr qoyulmuş sözlər əsasında cədvəldəki uyğunluğu müəyyən edin.
-</h3>
-
-<div class="text-passage mb-4">
-
-<p>
-Çox ovlaqlar içində çox ovları ovladım,<br>
-Aşıb-daşan arzumu mən artıq cilovladım.
-</p>
-
-<p class="mt-2 text-indigo-300">
-(B.Vahabzadə)
-</p>
-
-</div>
-
-<div class="bg-slate-950 rounded-lg p-4 mb-4 space-y-2 text-sm">
-
-<p><b>Doğrudur:</b></p>
-
-<p>1. Bir yerdə tələffüzü yanlışdan fərqlənir.</p>
-<p>2. Bir samitinin qarşılığı yoxdur.</p>
-<p>3. İki samitinin qarşılığı yoxdur.</p>
-
-<p class="mt-4"><b>Yanlışdır:</b></p>
-
-<p>4. Üç samiti kardır.</p>
-<p>5. Tərkibində bir kar samit vardır.</p>
-
-</div>
-
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q6" value="A">
-A) 1, 4, 5
-</label>
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q6" value="B">
-B) 1, 2, 3
-</label>
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q6" value="C">
-C) 3, 4, 5
-</label>
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q6" value="D">
-D) 2, 3, 4
-</label>
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q6" value="E">
-E) 1, 2, 5
-</label>
-
-</div>
-
-<div id="exp6" class="correct-answer-box">
-Düzgün cavab: <b>E) 1, 2, 5</b>
-</div>
-
-</div>
-
-
-<!-- Q7 -->
-
-<div class="question-card">
-
-<h3 class="font-bold mb-3">
-7. "K...mpaniya" sözündə nöqtələrin yerinə <b>o</b> hərfi yazılsa, nə baş verməz?
-</h3>
-
-<div class="bg-slate-950 rounded-lg p-4 mb-4 space-y-2 text-sm">
-
-<p>1. Söz "şirkət" mənasında olar.</p>
-<p>2. Yazılışı ilə tələffüzündə bir fərqli məqam olar.</p>
-<p>3. "Təbliğat", "reklam" sözlərinin sinonimi olar.</p>
-<p>4. "Endirim" sözünün qarşılığı kimi işlənər.</p>
-<p>5. Deyilişi ilə yazılışı arasında iki fərqli məqam olar.</p>
-
-</div>
-
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q7" value="A">
-A) 1, 2, 4
-</label>
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q7" value="B">
-B) 2, 3, 4
-</label>
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q7" value="C">
-C) 1, 2, 5
-</label>
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q7" value="D">
-D) 3, 4, 5
-</label>
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q7" value="E">
-E) 1, 3, 5
-</label>
-
-</div>
-
-<div id="exp7" class="correct-answer-box">
-Düzgün cavab: <b>D) 3, 4, 5</b>
-</div>
-
-</div>
-
-
-<!-- Q8 -->
-
-<div class="question-card">
-
-<div class="flex justify-between items-start gap-2 mb-3">
-
-<h3 class="font-bold">
-8. Sözlər əsasında Eyler-Venn diaqramına uyğun fikirləri müəyyən edin.
-</h3>
-
-<span class="badge-points">
-2.5 Bal
-</span>
-
-</div>
-
-<div class="bg-slate-950 rounded-lg p-4 mb-4 text-sm space-y-2">
-
-<p><b>Tramplin:</b></p>
-<p>1. Deyilişi ilə yazılışı fərqlənir.</p>
-<p>2. Tərkibində bir qapalı sait var.</p>
-
-<p class="mt-3"><b>Kəsişmə:</b></p>
-<p>3. Ahəng qanununa tabe deyil.</p>
-
-<p class="mt-3"><b>Dirijor:</b></p>
-<p>4. Tərkibində kar samit yoxdur.</p>
-<p>5. Saitlərdən biri tələffüz zamanı düşür.</p>
-
-</div>
-
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q8" value="A">
-A) 3, 4
-</label>
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q8" value="B">
-B) 4, 5
-</label>
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q8" value="C">
-C) 1, 4
-</label>
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q8" value="D">
-D) 1, 3, 5
-</label>
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q8" value="E">
-E) 1, 2, 5
-</label>
-
-</div>
-
-<div id="exp8" class="correct-answer-box">
-Düzgün cavab: <b>D) 1, 3, 5</b>
-</div>
-
-</div>
-
-
-<!-- Q9 -->
-
-<div class="question-card">
-
-<h3 class="font-bold mb-3">
-9. Sözlərin yazılışı və tələffüzündəki fərqli məqamlara görə məntiqi ardıcıllığı tamamlaya bilən nümunəni müəyyən edin.
-</h3>
-
-<div class="bg-slate-950 rounded-lg p-4 mb-4 text-sm">
-
-<p>tipoqrafiya</p>
-<p>təşkil</p>
-<p>toponim</p>
-<p>...</p>
-
-</div>
-
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q9" value="A">
-A) təqlid
-</label>
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q9" value="B">
-B) tüğyan
-</label>
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q9" value="C">
-C) təşviş
-</label>
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q9" value="D">
-D) transfer
-</label>
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q9" value="E">
-E) tiflik
-</label>
-
-</div>
-
-<div id="exp9" class="correct-answer-box">
-Düzgün cavab: <b>A) təqlid</b>
-</div>
-
-</div>
-
-
-<!-- Q10 -->
-
-<div class="question-card">
-
-<h3 class="font-bold mb-3">
-10. Cümləni tamamlaya bilməyən fikri müəyyən edin.
+<div class="poem">
+Dostlarım bilirlər nələr çəkirəm,<br>
+Hər axşam könlümü alırlar mənim.<br>
+Hər dəfə qapımı döyən zaman qəm,<br>
+Dostlarım həmdəmim olurlar mənim.<br>
+Payız gəldi, uçdu, getdi quşlar,<br>
+Sən də getdin, bax yağdı yağışlar.<br>
 <br>
-Çə...ik sözündəki nöqtələrin yerinə ...
-</h3>
-
-<div class="grid gap-2">
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q10" value="A">
-A) "p" hərfi yazılsa, qarşılığı olmayan samit iştirak etməyəcək.
-</label>
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q10" value="B">
-B) "p" hərfi yazılsa, deyilişi ilə yazılışı fərqlənməyəcək.
-</label>
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q10" value="C">
-C) "l" hərfi yazılsa, cingiltili samitlərin sayı kar samitlərdən az olacaq.
-</label>
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q10" value="D">
-D) "p" hərfi yazılsa, bütün samitlər kar olacaq.
-</label>
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q10" value="E">
-E) "l" hərfi yazılsa, "asa" sözünün sinonimi olacaq.
-</label>
-
+(F. Qoca)
 </div>
 
-<div id="exp10" class="correct-answer-box">
-Düzgün cavab: <b>C</b>
+<label class="option">
+<input type="radio" name="q5" value="A" onchange="updateProgress()">
+<span>A) İlk misrada məcazi mənalı söz yoxdur.</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q5" value="B" onchange="updateProgress()">
+<span>B) Yalnız qrammatik mənası olan sözlər də işlənmişdir.</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q5" value="C" onchange="updateProgress()">
+<span>C) Bir-birinin antonimi olan sözlər də vardır.</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q5" value="D" onchange="updateProgress()">
+<span>D) İkinci misrada frazeoloji birləşmə işlənmişdir.</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q5" value="E" onchange="updateProgress()">
+<span>E) Altından xətt çəkilmiş sözün omonimliyi eyni nitq hissəsinə aiddir.</span>
+</label>
+
+<div class="explanation" id="exp5">
+<b>Düzgün cavab: A</b>
 </div>
 
 </div>
 
-</section>
+
+<!-- 6 -->
+
+<div class="question glass">
+
+<div class="question-number">Sual 6</div>
+<div class="badge">2.5 bal</div>
+
+<div class="question-text">
+Tələffüzü yanlış olan sözü müəyyən edin.
+</div>
+
+<label class="option">
+<input type="radio" name="q6" value="A" onchange="updateProgress()">
+<span>A) ixtira [ixdira]</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q6" value="B" onchange="updateProgress()">
+<span>B) astar [asdar]</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q6" value="C" onchange="updateProgress()">
+<span>C) xilaskar [xilasgar]</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q6" value="D" onchange="updateProgress()">
+<span>D) azadlıq [azatdıx]</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q6" value="E" onchange="updateProgress()">
+<span>E) əlahiddə [ələ:hiddə]</span>
+</label>
+
+<div class="explanation" id="exp6">
+<b>Düzgün cavab: C</b>
+</div>
+
+</div>
 
 
-<!-- =====================================================
+<!-- 7 -->
+
+<div class="question glass">
+
+<div class="question-number">Sual 7</div>
+<div class="badge">2.5 bal</div>
+
+<div class="question-text">
+Nümunələrə əsasən cədvələ uyğun fikirləri müəyyən edin.
+</div>
+
+<div class="poem">
+Zayə getməz alın tərin,<br>
+Bir gün bitər şah əsərin,<br>
+Arzuların, diləklərin<br>
+Hələ sənin gözündədir.<br>
+<br>
+(O. Sarıvəlli)
+</div>
+
+<div class="poem">
+Payız olur, əsir soyuq küləklər,<br>
+Solur dağda, çöldə əlvan çiçəklər.<br>
+Gecələr uzanır, günlər qısalır,<br>
+Göy üzünü qara buludlar alır.<br>
+<br>
+(A. Şaiq)
+</div>
+
+<table>
+<tr>
+<th>Nümunələrin hər ikisinə aiddir</th>
+<th>Nümunələrdən yalnız birinə aiddir</th>
+</tr>
+
+<tr>
+<td>
+1. Frazeoloji birləşmə işlənmişdir.<br>
+2. Sonuncu misrada çoxmənalı söz(lər) işlənmişdir.<br>
+3. İkinci misrada omonim sözlər işlənmişdir.
+</td>
+
+<td>
+4. Leksik mənası olmayan sözlər də işlənmişdir.<br>
+5. Tünd-qara hərflərlə verilmiş söz omonimdir.<br>
+6. Bir-birini əvəz edə bilən sözlər işlənmişdir.
+</td>
+</tr>
+</table>
+
+<label class="option">
+<input type="radio" name="q7" value="A" onchange="updateProgress()">
+<span>A) 2, 4, 5</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q7" value="B" onchange="updateProgress()">
+<span>B) 2, 3, 6</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q7" value="C" onchange="updateProgress()">
+<span>C) 1, 2, 4, 6</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q7" value="D" onchange="updateProgress()">
+<span>D) 1, 3, 4, 5</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q7" value="E" onchange="updateProgress()">
+<span>E) 1, 3, 5, 6</span>
+</label>
+
+<div class="explanation" id="exp7">
+<b>Düzgün cavab: B</b>
+</div>
+
+</div>
+
+
+<!-- 8 -->
+
+<div class="question glass">
+
+<div class="question-number">Sual 8</div>
+<div class="badge">2.5 bal</div>
+
+<div class="question-text">
+Hansı fikirlərin yeri dəyişdirilsə, Eyler-Venn diaqramındakı yanlışlıq aradan qalxar?
+
+<strong>ikibəndli</strong> (1, 2) |
+<strong>Ortaq (3)</strong> |
+<strong>intəhasız</strong> (4, 5)
+
+1. Deyilişi ilə yazılışı fərqlənmir.
+2. Tərkibində iki kar samit var.
+3. Hecalarının sayı dörddür.
+4. Tərkibində üç kar samit var.
+5. Yalnız bir samitinin qarşılığı yoxdur.
+</div>
+
+<label class="option">
+<input type="radio" name="q8" value="A" onchange="updateProgress()">
+<span>A) 2 ↔ 3</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q8" value="B" onchange="updateProgress()">
+<span>B) 1 ↔ 5</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q8" value="C" onchange="updateProgress()">
+<span>C) 1 ↔ 4</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q8" value="D" onchange="updateProgress()">
+<span>D) 2 ↔ 4</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q8" value="E" onchange="updateProgress()">
+<span>E) 3 ↔ 5</span>
+</label>
+
+<div class="explanation" id="exp8">
+<b>Düzgün cavab: B</b>
+</div>
+
+</div>
+
+
+<!-- 9 -->
+
+<div class="question glass">
+
+<div class="question-number">Sual 9</div>
+<div class="badge">2.5 bal</div>
+
+<div class="question-text">
+Hansı söz birləşmələrinin birinci tərəfinin son samiti kar tələffüz olunmur?
+</div>
+
+<label class="option">
+<input type="radio" name="q9" value="A" onchange="updateProgress()">
+<span>A) iştirak ərizəsi</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q9" value="B" onchange="updateProgress()">
+<span>B) ahəng daşıyan</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q9" value="C" onchange="updateProgress()">
+<span>C) bilik dünyası</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q9" value="D" onchange="updateProgress()">
+<span>D) balıq tikəsi</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q9" value="E" onchange="updateProgress()">
+<span>E) qulaq ağrısı</span>
+</label>
+
+<div class="explanation" id="exp9">
+<b>Düzgün cavab: E</b>
+</div>
+
+</div>
+
+
+<!-- 10 -->
+
+<div class="question glass">
+
+<div class="question-number">Sual 10</div>
+<div class="badge">2.5 bal</div>
+
+<div class="question-text">
+Cədvələ əsasən uyğunluğu müəyyən edin.
+</div>
+
+<table>
+<tr>
+<th>Frazeoloji birləşmə</th>
+<th>Yaxınmənalı qarşılıq</th>
+<th>Əksmənalı qarşılıq</th>
+</tr>
+
+<tr>
+<td><strong>yaxasını kənara çəkmək</strong></td>
+<td>
+1. Sənin bu vəzifəni boynundan atmağa haqqın yoxdur.<br>
+2. Uşaqlar dənizə getməkdən imtina etdilər.
+</td>
+<td>
+4. Bu işi boynuma götürürəm.
+</td>
+</tr>
+
+<tr>
+<td><strong>kələfin ucunu itirmək</strong></td>
+<td>
+3. Mən bu qədər termini görəndə çaşıb qaldım.
+</td>
+<td>
+5. Xəbərləri eşidəndə kefim açıldı.
+</td>
+</tr>
+</table>
+
+<label class="option">
+<input type="radio" name="q10" value="A" onchange="updateProgress()">
+<span>A) 1, 4, 5</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q10" value="B" onchange="updateProgress()">
+<span>B) 1, 4</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q10" value="C" onchange="updateProgress()">
+<span>C) 1, 2, 5</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q10" value="D" onchange="updateProgress()">
+<span>D) 3, 4</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q10" value="E" onchange="updateProgress()">
+<span>E) 2, 3, 5</span>
+</label>
+
+<div class="explanation" id="exp10">
+<b>Düzgün cavab: B</b>
+</div>
+
+</div>
+
+
+<!-- =========================================================
      II BÖLMƏ
-===================================================== -->
+========================================================= -->
 
-<section class="border-b border-slate-800 pb-4 mt-8">
-
-<h2 class="text-xl font-bold text-indigo-400 flex items-center gap-2 mb-4">
-📖 II Bölmə: "Əsgər anası" mətni
-</h2>
-
-<div class="text-passage mb-6">
-
-<h3 class="text-center font-bold text-indigo-300 text-lg mb-4">
-Əsgər anası
-</h3>
-
-<p>
-<b>I.</b> Oğlunu orduya yola salandan sonra ana evdə otura bilmədi.
-Qonşusu dərzi Cahangirin yanına gedib arteldə işə başlamaq üçün kömək istədi.
-Dərzilik əl əməyinə əsaslanan kustar peşə sahəsidir. Bu peşə ona çoxdan tanış və yaxın iş idi.
-Cavanlıqda onun tikmə köynəkləri, əl işləri, sapla vurduğu naxışlar məşhur idi.
-Sonradan başı ailəyə, övlad böyütməyə qarışmışdı.
-</p>
-
-<p>
-<b>II.</b> O, yenə sənətinə qayıtmışdı, ancaq indi arteldə naxışlı köynək,
-ya dəsmal hazırlamırdı. Qışqabağı yun parçalardan isti paltar tikirdi.
-Yoldaşları da, ustası da onun işinə diqqət yetirir, kömək edirdilər.
-İşlədikcə gəncliyini xatırlayırdı. Ancaq heç bir xatirə və xəyal onu
-oğlu Tahir qədər məşğul etmirdi.
-</p>
-
-<p>
-<b>III.</b> Elə bilirdi, tikdiyi köynəklərin hamısı Tahir üçündür.
-Az qalırdı, verilən bütün ölçüləri kənara qoysun, ancaq oğlunun boyuna
-uyğun biçsin. Xəyalında Tahiri həmin köynək əynində düşmən üstünə hücum
-edən görürdü. Tikdiyi paltarların düyməsini möhkəm etmək üçün hamıdan
-çox çalışırdı. "Bir düymə", deyirdi, "əsgəri vacib işindən qoya bilər!"
-Düşünürdü ki, Tahirə yazaram: "Bala, köynəyin yaxasına fikir ver.
-Orada ananın əlləri gəzmişdir..."
-</p>
-
-<p>
-<b>IV.</b> Tezdən onu oğlundan xəbər eşitmək üçün sonsuz ümidlə radionun
-qabağında görərdin. Hava isti keçdiyi üçün ürəyi nisbətən rahatlıq tapırdı.
-Savadsız olsa da, hər gün qəzet alır, axşam məktəb uşaqlarına oxudurdu.
-Hərdən onlardan soruşurdu:
-"Bala, quduz Hitlerin qoşunu bəs nə vaxt qırılacaq, o barədə nə yazırlar?"
-</p>
-
-<p>
-<b>V.</b> Tahir ilk məktubunda anasının arzusuna cavab vermişdi:
-"Ana, düşməni tam məhv edəndən sonra görüşərik".
-Ana isə məktubunda yazırdı:
-"Oğul, yaz görüm, əlimlə tikdiyim köynək sənə çatdımı?
-İstidir, möhkəmdir. Gərək səni sıxsın, soyuqdan qorusun,
-indi orada, deyilənə görə, qar yağır".
-</p>
-
-<p>
-<b>VI.</b> Məktubu poçt qutusuna salandan sonra xəyal olub özü də
-kağızla birgə yollara düşürdü. Hərdən ürəyinə gəlirdi:
-"Davadır, göydən od yağır, Tahir tüfəngi alıb necə qələm götürsün?"
-</p>
-
-<p>
-<b>VII.</b> Bir gün anaya "Qəzetdə Tahirin şəkli var" xəbərini verdilər.
-Tezdən alıb qoynuna qoyduğu qəzeti çıxarıb açdı. Başında ulduzlu papaq,
-əynində əsgər köynəyi olan bir oğlan ananın üzünə baxıb gülümsəyirdi.
-Sanki gülə-gülə soruşurdu:
-<br><br>
-<i>Necədir, ana, yaraşırmı?!</i>
-</p>
-
-<p>
-<b>VIII.</b> Ananın gözləri yaşardı. Sanki aylardan bəri ayrıldığı
-oğlunu bağrına basdı. Şəkli güzgü kimi gözünün önündə saxladı.
-Baxdı, baxdı, ixtiyarsız dilindən bu sözlər qopdu:
-<br><br>
-<i>Mübarək olsun, bala, paltarların mübarək, nizamın mübarək!</i>
-<br><br>
-Bir neçə gündən sonra Tahir anasını məktubu ilə yenə sevindirdi.
-</p>
-
+<div class="section-title">
+    <div class="section-number">II</div>
+    <div>Qrammatika və dil qaydaları</div>
 </div>
 
 
-<!-- Q11 -->
+<!-- 11 -->
 
-<div class="question-card">
+<div class="question glass">
 
-<h3 class="font-bold mb-3">
-11. Mətnə əsasən cədvəldəki doğru fikirləri müəyyən edin.
-</h3>
+<div class="question-number">Sual 11</div>
+<div class="badge">2.5 bal</div>
 
-<span class="badge-points">2.5 Bal</span>
+<div class="question-text">
+Hansı cümlədə isim düzəldən şəkilçili söz işlənmişdir?
+</div>
 
-<div class="grid grid-cols-2 gap-2 mt-3">
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q11" value="A">
-A) 3, 4, 5
+<label class="option">
+<input type="radio" name="q11" value="A" onchange="updateProgress()">
+<span>A) Uşaqlar həyətə çıxdılar.</span>
 </label>
 
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q11" value="E">
-E) 2, 5
+<label class="option">
+<input type="radio" name="q11" value="B" onchange="updateProgress()">
+<span>B) Müəllim dərsi izah etdi.</span>
 </label>
 
-</div>
-
-<div id="exp11" class="correct-answer-box">
-Düzgün cavab: <b>E) 2, 5</b>
-</div>
-
-</div>
-
-
-<!-- Q12 -->
-
-<div class="question-card">
-
-<h3 class="font-bold mb-3">
-12. Mətndəki əsas fikri ifadə edən aforizmi müəyyən edin.
-</h3>
-
-<div class="grid gap-2">
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q12" value="A">
-A) Günəşin son şüası belə tükənər, ancaq bir ananın ümidləri və sevgisi həmişə yaşayar.
+<label class="option">
+<input type="radio" name="q11" value="C" onchange="updateProgress()">
+<span>C) Kitabxanaçı kitabları düzəltdi.</span>
 </label>
 
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q12" value="B">
-B) Bir ana ürəyi dibində həmişə əfv olan uçurumdur.
+<label class="option">
+<input type="radio" name="q11" value="D" onchange="updateProgress()">
+<span>D) O, məktəbə getdi.</span>
 </label>
 
-</div>
-
-<div id="exp12" class="correct-answer-box">
-Düzgün cavab: <b>A</b>
-</div>
-
-</div>
-
-
-<!-- Q13 -->
-
-<div class="question-card">
-
-<h3 class="font-bold mb-3">
-13. Mətndə hansı suala cavab yoxdur?
-</h3>
-
-<div class="grid gap-2">
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q13" value="E">
-E) Tahirin şəkli niyə qəzetdə idi?
+<label class="option">
+<input type="radio" name="q11" value="E" onchange="updateProgress()">
+<span>E) Hava çox gözəl idi.</span>
 </label>
 
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q13" value="A">
-A) Tahir anasına necə təskinlik verirdi?
+<div class="explanation" id="exp11">
+<b>Düzgün cavab: C</b>
+</div>
+
+</div>
+
+
+<!-- 12 -->
+
+<div class="question glass">
+
+<div class="question-number">Sual 12</div>
+<div class="badge">2.5 bal</div>
+
+<div class="question-text">
+Hansı söz sifətdir?
+</div>
+
+<label class="option">
+<input type="radio" name="q12" value="A" onchange="updateProgress()">
+<span>A) sürətlə</span>
 </label>
 
-</div>
-
-<div id="exp13" class="correct-answer-box">
-Düzgün cavab: <b>E</b>
-</div>
-
-</div>
-
-
-<!-- Q14 -->
-
-<div class="question-card">
-
-<h3 class="font-bold mb-3">
-14. Mətnin üslubu üçün səciyyəvi olmayan cümlə neçənci abzasdadır?
-</h3>
-
-<div class="grid grid-cols-2 gap-2">
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q14" value="A">
-A) I abzas
+<label class="option">
+<input type="radio" name="q12" value="B" onchange="updateProgress()">
+<span>B) gözəllik</span>
 </label>
 
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q14" value="B">
-B) II abzas
+<label class="option">
+<input type="radio" name="q12" value="C" onchange="updateProgress()">
+<span>C) gözəl</span>
 </label>
 
-</div>
-
-<div id="exp14" class="correct-answer-box">
-Düzgün cavab: <b>A) I abzas</b>
-</div>
-
-</div>
-
-
-<!-- Q15 -->
-
-<div class="question-card">
-
-<h3 class="font-bold mb-3">
-15. Mətnin tərkib hissələrini nəzərə alaraq ardıcıllığı müəyyən edin.
-</h3>
-
-<div class="grid grid-cols-2 gap-2">
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q15" value="C">
-C) 2, 5, 3, 1, 4
+<label class="option">
+<input type="radio" name="q12" value="D" onchange="updateProgress()">
+<span>D) gözəlləşmək</span>
 </label>
 
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q15" value="A">
-A) 5, 2, 3, 1, 4
+<label class="option">
+<input type="radio" name="q12" value="E" onchange="updateProgress()">
+<span>E) gözəlliklə</span>
 </label>
 
-</div>
-
-<div id="exp15" class="correct-answer-box">
-Düzgün cavab: <b>C) 2, 5, 3, 1, 4</b>
-</div>
-
-</div>
-
-
-<!-- Q16 -->
-
-<div class="question-card">
-
-<h3 class="font-bold mb-3">
-16. Mətnin əsas hissəsində bir-birinə zidd olan fikirlər neçənci abzaslardadır?
-Fikrinizi əsaslandırın.
-</h3>
-
-<textarea
-id="q16"
-class="w-full p-3 rounded-lg text-box-style h-24"
-placeholder="Cavabınızı yazın..."></textarea>
-
-<div id="user_stat_q16" class="mt-2 text-xs font-bold"></div>
-
-<div id="exp16" class="correct-answer-box">
-Model cavab:
-<b>IV və V abzaslar.</b>
-IV abzasda hava isti göstərilir, V abzasda isə qar yağdığı bildirilir.
+<div class="explanation" id="exp12">
+<b>Düzgün cavab: C</b>
 </div>
 
 </div>
 
 
-<!-- Q17 -->
+<!-- 13 -->
 
-<div class="question-card">
+<div class="question glass">
 
-<h3 class="font-bold mb-3">
-17. Mətnə əsasən ananın təskinliyini ifadə edən 2 cümlə yazın.
-</h3>
+<div class="question-number">Sual 13</div>
+<div class="badge">2.5 bal</div>
 
-<textarea
-id="q17"
-class="w-full p-3 rounded-lg text-box-style h-24"
-placeholder="İki cümlə yazın..."></textarea>
-
-<div id="user_stat_q17" class="mt-2 text-xs font-bold"></div>
-
-<div id="exp17" class="correct-answer-box">
-Model cavab:
-Ananın tikdiyi paltarlarda oğlunu xatırlaması və hava isti keçdiyi üçün ürəyinin nisbətən rahatlıq tapması.
+<div class="question-text">
+Hansı cümlədə feilin keçmiş zaman forması işlənmişdir?
 </div>
 
-</div>
-
-
-<!-- Q18 -->
-
-<div class="question-card">
-
-<h3 class="font-bold mb-3">
-18. Ananın xarakterini tamamlayan xüsusiyyətləri yazın.
-</h3>
-
-<input
-id="q18"
-class="w-full p-3 rounded-lg text-box-style"
-placeholder="Məsələn: zəhmətkeş, qayğıkeş...">
-
-<div id="user_stat_q18" class="mt-2 text-xs font-bold"></div>
-
-<div id="exp18" class="correct-answer-box">
-Model cavab:
-<b>zəhmətkeş, qayğıkeş, fədakar, oğluna bağlı, sadəlövh</b>.
-</div>
-
-</div>
-
-
-<!-- Q19 -->
-
-<div class="question-card">
-
-<h3 class="font-bold mb-3">
-19. VI abzasdakı üslubi cəhətdən nöqsanlı cümləni düzəldərək yazın.
-</h3>
-
-<textarea
-id="q19"
-class="w-full p-3 rounded-lg text-box-style h-24"
-placeholder="Düzgün cümləni yazın..."></textarea>
-
-<div id="user_stat_q19" class="mt-2 text-xs font-bold"></div>
-
-<div id="exp19" class="correct-answer-box">
-Model cavab:
-<b>Davadır, göydən od yağır, Tahir tüfəngi alıb necə qələm götürsün?</b>
-</div>
-
-</div>
-
-
-<!-- Q20 -->
-
-<div class="question-card">
-
-<h3 class="font-bold mb-3">
-20. Altından xətt çəkilmiş cümlənin üslubi xüsusiyyətini və əsaslandırmanı qeyd edin.
-</h3>
-
-<textarea
-id="q20"
-class="w-full p-3 rounded-lg text-box-style h-24"
-placeholder="Cavabınızı yazın..."></textarea>
-
-<div id="user_stat_q20" class="mt-2 text-xs font-bold"></div>
-
-<div id="exp20" class="correct-answer-box">
-Model cavab:
-<b>Emosionallıq, obrazlılıq, məcazlılıq.</b>
-Müharibənin dəhşəti obrazlı şəkildə ifadə olunur.
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     III BÖLMƏ
-===================================================== -->
-
-<section class="mt-8">
-
-<h2 class="text-xl font-bold text-indigo-400 flex items-center gap-2 mb-4">
-🎭 III Bölmə: "Azərbaycanın ilk professional qadın müğənnisi"
-</h2>
-
-<div class="text-passage mb-6">
-
-<h3 class="text-center font-bold text-indigo-300 text-lg mb-4">
-Azərbaycanın ilk professional qadın müğənnisi
-</h3>
-
-<p>
-XX əsrin əvvəllərində opera səhnəsində bütün qadın rollarını kişilər ifa edirdi.
-Köhnəfikirli adamlar qadınların səhnəyə çıxmasını pis qarşılayırdılar.
-Təhlükəli olsa da, Azərbaycan qadınlarının qapalı geyimdə gəzdikləri vaxt
-Şövkət Məmmədova tamaşaların <b>...1...</b> uyğun avropasayağı geyimdə səhnəyə çıxdı.
-Ölümlə üz-üzə dayanaraq sənətə addım atan ilk qadın müğənni oldu.
-</p>
-
-<p>
-Musiqiyə marağı ailəsindən başlasa da, balaca Şövkətin Romanovlar Musiqi
-Cəmiyyətinin nəzdindəki musiqi məktəbində təhsil alması onun bu sahəyə
-daha sıx bağlanmasına səbəb olmuşdu.
-</p>
-
-<p>
-Hacı Zeynalabdin Tağıyev təsadüfən gənc qızın istedadını görərək təhsil alması
-üçün onu İtaliyaya göndərmişdi. Şövkət 1911-ci ildə Milan şəhərində musiqi
-məktəbinə daxil olmuş, bir il sonra nədənsə ona gələn yardım kəsilmiş və
-bu səbəbdən geri qayıtmalı olmuşdu.
-</p>
-
-<p>
-Bir qədər sonra Üzeyir Hacıbəyli təhsilini davam etdirməsi üçün Şövkətə
-kömək təklif edir və onu Şərqdə ilk qadın olaraq səhnəyə çıxmağa ürəkləndirir.
-</p>
-
-<p>
-1912-ci ildə Tağıyevin teatrında "Ər və arvad" operettası səhnəyə qoyulur.
-Tamaşadan gələn gəlir Şövkətin təhsilini davam etdirməsinə ayrılacaqdı.
-Bunun üçün isə gənc ifaçı səhnədə bir neçə musiqi ifa etməli idi.
-Tamaşadan sonra Şövkət səhnəyə çıxır və "Seviliya bərbəri" operasından
-Rozinanın ariyasını böyük <b>...2...</b> ifa edir.
-</p>
-
-<p>
-Bu yeniliyi götürməyən bəzi mühafizəkarlar Şövkəti və ona köməklik edən
-Üzeyir bəyi öldürmək istəyirlər. Şövkət səhnədə olarkən dostları həyatının
-təhlükədə olduğu barədə onu xəbərdar edirlər. Bu müddətdə qoçuların
-Şövkətə atəş açmaq üçün kifayət qədər vaxtı olsa da, amma onun sehrli
-səsinə valeh olub əllərini tərpədə bilmirlər. Şövkətin ifası bitən kimi
-dostları onları arxa qapıdan faytonla qaçırırlar.
-</p>
-
-<p>
-Şövkət 1915-ci ildən təhsilini Kiyev konservatoriyasında davam etdirir.
-Burada tanınmış bəstəkar Reynqold Qlier müğənninin ecazkar səsinə pərəstiş edir
-və məşhur "Şahsənəm" əsərini yazır. Sonralar Şövkət xanım bu operada
-Şahsənəmin partiyasını misilsiz füsunkarlıqla ifa edərək SSRİ xalq artisti
-adına layiq görülür.
-</p>
-
-<p>
-Şövkət xanım təhsil alıb Azərbaycana döndükdən sonra mədəni həyatda fəal
-iştirak edir. 1923-cü ildə onun təşəbbüsü ilə Bakıda teatr texnikumu açılır.
-</p>
-
-<p>
-Azərbaycan səhnəsinin sönməz ulduzu Şövkət Məmmədova özündən sonra çox
-sayda qadınların səhnəyə çıxmasına, onların Azərbaycan mədəniyyətinə
-uğurlar gətirməsinə səbəb olmuşdur.
-</p>
-
-</div>
-
-
-<!-- Q21 -->
-
-<div class="question-card">
-
-<h3 class="font-bold mb-3">
-21. Mətndə üzərində rəqəm yazılmış sözlərin izahı ilə bağlı doğru uyğunluğu müəyyən edin.
-</h3>
-
-<div class="grid grid-cols-2 gap-2">
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q21" value="D">
-D) 1-b; 2-a,e
+<label class="option">
+<input type="radio" name="q13" value="A" onchange="updateProgress()">
+<span>A) Mən sabah gedəcəyəm.</span>
 </label>
 
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q21" value="B">
-B) 1-a; 2-e
+<label class="option">
+<input type="radio" name="q13" value="B" onchange="updateProgress()">
+<span>B) Mən indi kitab oxuyuram.</span>
 </label>
 
-</div>
-
-<div id="exp21" class="correct-answer-box">
-Düzgün cavab: <b>D</b>
-</div>
-
-</div>
-
-
-<!-- Q22 -->
-
-<div class="question-card">
-
-<h3 class="font-bold mb-3">
-22. Boş çərçivənin yerinə hansı nümunə artırılsa, cümlələr arasında əlaqə yaranar?
-</h3>
-
-<div class="grid gap-2">
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q22" value="A">
-A) Şövkət xanım isə heç nəyə məhəl qoymayaraq ariyanı başa vurur.
+<label class="option">
+<input type="radio" name="q13" value="C" onchange="updateProgress()">
+<span>C) Mən dünən məktəbə getdim.</span>
 </label>
 
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q22" value="B">
-B) Üzeyir bəy təlaşla Şövkəti oradan uzaqlaşdırır.
+<label class="option">
+<input type="radio" name="q13" value="D" onchange="updateProgress()">
+<span>D) Mən hər gün oxuyuram.</span>
 </label>
 
-</div>
-
-<div id="exp22" class="correct-answer-box">
-Düzgün cavab: <b>A</b>
-</div>
-
-</div>
-
-
-<!-- Q23 -->
-
-<div class="question-card">
-
-<h3 class="font-bold mb-3">
-23. Aid olduğu üsluba xas olaraq mətndə:
-<br>
-1. Mətbuat dilindən istifadə olunmuşdur.
-<br>
-3. Fikirlər aydın təqdim edilmişdir.
-</h3>
-
-<div class="grid grid-cols-2 gap-2">
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q23" value="C">
-C) 1, 3
+<label class="option">
+<input type="radio" name="q13" value="E" onchange="updateProgress()">
+<span>E) Mən sabah oxuyacağam.</span>
 </label>
 
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q23" value="D">
-D) 1, 5
+<div class="explanation" id="exp13">
+<b>Düzgün cavab: C</b>
+</div>
+
+</div>
+
+
+<!-- 14 -->
+
+<div class="question glass">
+
+<div class="question-number">Sual 14</div>
+<div class="badge">2.5 bal</div>
+
+<div class="question-text">
+Hansı söz mürəkkəb sözdür?
+</div>
+
+<label class="option">
+<input type="radio" name="q14" value="A" onchange="updateProgress()">
+<span>A) kitab</span>
 </label>
 
-</div>
-
-<div id="exp23" class="correct-answer-box">
-Düzgün cavab: <b>C) 1, 3</b>
-</div>
-
-</div>
-
-
-<!-- Q24 -->
-
-<div class="question-card">
-
-<h3 class="font-bold mb-3">
-24. Mətnə əsasən doğru hökmdür:
-<br>
-2. Şövkət musiqi təhsilini tamamlaya bilməyib.
-<br>
-5. Həmin dövrdə opera sənətinə maraq olmayıb.
-</h3>
-
-<div class="grid grid-cols-2 gap-2">
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q24" value="C">
-C) 2, 5
+<label class="option">
+<input type="radio" name="q14" value="B" onchange="updateProgress()">
+<span>B) məktəb</span>
 </label>
 
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q24" value="E">
-E) 1, 4
+<label class="option">
+<input type="radio" name="q14" value="C" onchange="updateProgress()">
+<span>C) ayaqqabı</span>
 </label>
 
-</div>
-
-<div id="exp24" class="correct-answer-box">
-Düzgün cavab: <b>C) 2, 5</b>
-</div>
-
-</div>
-
-
-<!-- Q25 -->
-
-<div class="question-card">
-
-<h3 class="font-bold mb-3">
-25. Mətn əsasında cədvəldəki doğru nümunələri müəyyən edin.
-</h3>
-
-<div class="grid grid-cols-2 gap-2">
-
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q25" value="C">
-C) 2, 5
+<label class="option">
+<input type="radio" name="q14" value="D" onchange="updateProgress()">
+<span>D) qələm</span>
 </label>
 
-<label class="q-option p-3 bg-slate-800 rounded-lg border border-slate-700">
-<input type="radio" name="q25" value="A">
-A) 3, 4
+<label class="option">
+<input type="radio" name="q14" value="E" onchange="updateProgress()">
+<span>E) dəftər</span>
 </label>
 
-</div>
-
-<div id="exp25" class="correct-answer-box">
-Düzgün cavab: <b>C) 2, 5</b>
-</div>
-
-</div>
-
-
-<!-- Q26 -->
-
-<div class="question-card">
-
-<h3 class="font-bold mb-3">
-26. Mətnə əsasən iki fakt yazmaqla Şövkətin qarşısına çıxan çətinlikləri müəyyən edin.
-</h3>
-
-<textarea
-id="q26"
-class="w-full p-3 rounded-lg text-box-style h-24"
-placeholder="İki fakt yazın..."></textarea>
-
-<div id="user_stat_q26" class="mt-2 text-xs font-bold"></div>
-
-<div id="exp26" class="correct-answer-box">
-Model cavab:
-<b>1.</b> Sənəti anlamayan insanların hədələri.
-<br>
-<b>2.</b> Maddi çətinliklər və Tağıyevin yardımının kəsilməsi.
+<div class="explanation" id="exp14">
+<b>Düzgün cavab: C</b>
 </div>
 
 </div>
 
 
-<!-- Q27 -->
+<!-- 15 -->
 
-<div class="question-card">
+<div class="question glass">
 
-<h3 class="font-bold mb-3">
-27. Mətndə nöqtələrin yerinə uyğun sözləri müəyyən edib yazın.
-</h3>
+<div class="question-number">Sual 15</div>
+<div class="badge">2.5 bal</div>
 
-<input
-id="q27"
-class="w-full p-3 rounded-lg text-box-style"
-placeholder="Cavabınızı yazın...">
+<div class="question-text">
+Hansı cümlədə əvəzlik işlənmişdir?
+</div>
 
-<div id="user_stat_q27" class="mt-2 text-xs font-bold"></div>
+<label class="option">
+<input type="radio" name="q15" value="A" onchange="updateProgress()">
+<span>A) Uşaq kitab oxudu.</span>
+</label>
 
-<div id="exp27" class="correct-answer-box">
-Model cavab:
-<b>1.</b> tələbinə, qaydalarına, quruluşuna
-<br>
-<b>2.</b> məharətlə, ustalıqla, peşəkarlıqla
+<label class="option">
+<input type="radio" name="q15" value="B" onchange="updateProgress()">
+<span>B) Mən bu kitabı oxudum.</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q15" value="C" onchange="updateProgress()">
+<span>C) Gözəl çiçəklər açıldı.</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q15" value="D" onchange="updateProgress()">
+<span>D) Hava soyuq idi.</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q15" value="E" onchange="updateProgress()">
+<span>E) Uşaqlar qaçdılar.</span>
+</label>
+
+<div class="explanation" id="exp15">
+<b>Düzgün cavab: B</b>
 </div>
 
 </div>
 
 
-<!-- Q28 -->
+<!-- 16 -->
 
-<div class="question-card">
+<div class="question glass">
 
-<h3 class="font-bold mb-3">
-28. Şövkətin istedadının dəyərləndirilməsini göstərən ən azı 2 fakt yazın.
-</h3>
+<div class="question-number">Sual 16</div>
+<div class="badge">2.5 bal</div>
 
-<textarea
-id="q28"
-class="w-full p-3 rounded-lg text-box-style h-24"
-placeholder="Faktları yazın..."></textarea>
+<div class="question-text">
+Hansı söz zərfdir?
+</div>
 
-<div id="user_stat_q28" class="mt-2 text-xs font-bold"></div>
+<label class="option">
+<input type="radio" name="q16" value="A" onchange="updateProgress()">
+<span>A) sürətli</span>
+</label>
 
-<div id="exp28" class="correct-answer-box">
-Model cavab:
-Şövkət üçün "Şahsənəm" əsəri yazılıb, SSRİ xalq artisti adına layiq görülüb,
-Tağıyev və Üzeyir Hacıbəyli onun təhsilinə kömək ediblər.
+<label class="option">
+<input type="radio" name="q16" value="B" onchange="updateProgress()">
+<span>B) sürət</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q16" value="C" onchange="updateProgress()">
+<span>C) sürətlə</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q16" value="D" onchange="updateProgress()">
+<span>D) sürətləndir</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q16" value="E" onchange="updateProgress()">
+<span>E) sürətlənmək</span>
+</label>
+
+<div class="explanation" id="exp16">
+<b>Düzgün cavab: C</b>
 </div>
 
 </div>
 
 
-<!-- Q29 -->
+<!-- 17 -->
 
-<div class="question-card">
+<div class="question glass">
 
-<h3 class="font-bold mb-3">
-29. "Yalnız yaradıcı insanlar tarixin yaddaşında həmişəlik qalırlar"
-fikrini mətn əsasında əsaslandırın.
-</h3>
+<div class="question-number">Sual 17</div>
+<div class="badge">2.5 bal</div>
 
-<textarea
-id="q29"
-class="w-full p-3 rounded-lg text-box-style h-24"
-placeholder="Əsaslandırmanızı yazın..."></textarea>
+<div class="question-text">
+Hansı cümlədə bağlayıcı işlənmişdir?
+</div>
 
-<div id="user_stat_q29" class="mt-2 text-xs font-bold"></div>
+<label class="option">
+<input type="radio" name="q17" value="A" onchange="updateProgress()">
+<span>A) Mən və dostum məktəbə getdik.</span>
+</label>
 
-<div id="exp29" class="correct-answer-box">
-Model cavab:
-<b>
-Sənətə əngəl olmağa çalışanlar unudulub, Şövkət Məmmədova isə
-ilk professional qadın müğənni kimi tarixdə qalıb.
-</b>
+<label class="option">
+<input type="radio" name="q17" value="B" onchange="updateProgress()">
+<span>B) Uşaq sürətlə qaçdı.</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q17" value="C" onchange="updateProgress()">
+<span>C) Kitab masanın üstündədir.</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q17" value="D" onchange="updateProgress()">
+<span>D) Mən məktəbə getdim.</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q17" value="E" onchange="updateProgress()">
+<span>E) Hava çox gözəldir.</span>
+</label>
+
+<div class="explanation" id="exp17">
+<b>Düzgün cavab: A</b>
 </div>
 
 </div>
 
 
-<!-- Q30 -->
+<!-- 18 -->
 
-<div class="question-card">
+<div class="question glass">
 
-<h3 class="font-bold mb-3">
-30. "Şövkətin musiqi sənətinə gəlməyi təsadüfi olmayıb"
-hökmünü 2 faktla əsaslandırın.
-</h3>
+<div class="question-number">Sual 18</div>
+<div class="badge">2.5 bal</div>
 
-<textarea
-id="q30"
-class="w-full p-3 rounded-lg text-box-style h-24"
-placeholder="1-ci və 2-ci faktı yazın..."></textarea>
+<div class="question-text">
+Hansı söz feil deyil?
+</div>
 
-<div id="user_stat_q30" class="mt-2 text-xs font-bold"></div>
+<label class="option">
+<input type="radio" name="q18" value="A" onchange="updateProgress()">
+<span>A) yazmaq</span>
+</label>
 
-<div id="exp30" class="correct-answer-box">
-Model cavab:
-<b>1.</b> Musiqiyə marağı ailəsindən başlayıb.
-<br>
-<b>2.</b> Kiçik yaşlarında Romanovlar Musiqi Cəmiyyətinin nəzdindəki
-musiqi məktəbində təhsil alıb.
+<label class="option">
+<input type="radio" name="q18" value="B" onchange="updateProgress()">
+<span>B) oxumaq</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q18" value="C" onchange="updateProgress()">
+<span>C) qaçmaq</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q18" value="D" onchange="updateProgress()">
+<span>D) gözəl</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q18" value="E" onchange="updateProgress()">
+<span>E) getmək</span>
+</label>
+
+<div class="explanation" id="exp18">
+<b>Düzgün cavab: D</b>
 </div>
 
 </div>
 
-</section>
+
+<!-- 19 -->
+
+<div class="question glass">
+
+<div class="question-number">Sual 19</div>
+<div class="badge">2.5 bal</div>
+
+<div class="question-text">
+Hansı cümlədə mürəkkəb cümlə işlənmişdir?
+</div>
+
+<label class="option">
+<input type="radio" name="q19" value="A" onchange="updateProgress()">
+<span>A) Mən kitab oxuyuram.</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q19" value="B" onchange="updateProgress()">
+<span>B) Uşaq məktəbə getdi.</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q19" value="C" onchange="updateProgress()">
+<span>C) Mən kitab oxudum və sonra film izlədim.</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q19" value="D" onchange="updateProgress()">
+<span>D) Hava soyuqdur.</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q19" value="E" onchange="updateProgress()">
+<span>E) O, çox çalışqandır.</span>
+</label>
+
+<div class="explanation" id="exp19">
+<b>Düzgün cavab: C</b>
+</div>
+
+</div>
 
 
-<!-- =====================================================
-     FINISH BUTTON
-===================================================== -->
+<!-- 20 -->
+
+<div class="question glass">
+
+<div class="question-number">Sual 20</div>
+<div class="badge">2.5 bal</div>
+
+<div class="question-text">
+Aşağıdakı sözlərdən hansı sifətdir?
+</div>
+
+<label class="option">
+<input type="radio" name="q20" value="A" onchange="updateProgress()">
+<span>A) sürətlə</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q20" value="B" onchange="updateProgress()">
+<span>B) kitablıq</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q20" value="C" onchange="updateProgress()">
+<span>C) gözəl</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q20" value="D" onchange="updateProgress()">
+<span>D) oxumaq</span>
+</label>
+
+<label class="option">
+<input type="radio" name="q20" value="E" onchange="updateProgress()">
+<span>E) yazmaq</span>
+</label>
+
+<div class="explanation" id="exp20">
+<b>Düzgün cavab: C</b>
+</div>
+
+</div>
+
 
 <button
-type="button"
-onclick="calculateScore()"
-class="finish-btn w-full py-4 hover:brightness-110 active:scale-[.99] transition-all text-white font-extrabold text-lg rounded-xl shadow-xl mt-6">
-
-🚀 İmtahanı Bitir və Nəticəni Gör
-
+    class="finish-btn"
+    onclick="calculateScore()"
+>
+    Testi tamamla
 </button>
 
-</form>
+
+<!-- TEST EDƏNLƏR -->
+
+<div class="history-section glass">
+
+    <div class="history-title">
+        📋 Test edənlər
+    </div>
+
+    <div class="history-subtitle">
+        Bu cihazda testi tamamlayan iştirakçıların nəticələri
+    </div>
+
+    <div
+        class="history-list"
+        id="historyList"
+    ></div>
+
+</div>
+
+</div>
 
 
-<!-- =====================================================
-     RESULT
-===================================================== -->
+<!-- NƏTİCƏ MODALI -->
 
 <div
-id="resultModal"
-class="hidden mt-8 p-6 bg-slate-800/95 border-2 border-indigo-500 rounded-2xl text-center shadow-2xl result-card">
+    class="modal"
+    id="resultModal"
+>
 
-<div
-id="resultEmoji"
-class="text-5xl mb-3">
-🏆
-</div>
+<div class="result-box glass">
 
-<h2
-id="resUser"
-class="text-2xl font-bold text-white mb-3">
-</h2>
+    <div class="result-title">
+        Test tamamlandı 🎯
+    </div>
 
-<div
-id="resPoints"
-class="score-number text-amber-400 my-3">
-</div>
+    <div
+        id="participantNameResult"
+        style="
+            color:#c4b5fd;
+            font-weight:800;
+            margin-bottom:8px;
+        "
+    ></div>
 
-<div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-5">
+    <div
+        class="result-score"
+        id="finalScore"
+    >
+        0 / 50
+    </div>
 
-<div class="result-stat">
+    <div
+        class="result-comment"
+        id="resultComment"
+    ></div>
 
-<div
-class="text-emerald-400 text-2xl font-black"
-id="closedCorrect">
-0
-</div>
+    <div class="result-stats">
 
-<div class="text-xs text-slate-400">
-Qapalı düzgün
-</div>
+        <div class="result-stat">
+            <strong id="closedCorrect">
+                0 / 20
+            </strong>
+            <span>Düzgün</span>
+        </div>
 
-</div>
+        <div class="result-stat">
+            <strong id="wrongCount">
+                20
+            </strong>
+            <span>Səhv / boş</span>
+        </div>
 
-<div class="result-stat">
+        <div class="result-stat">
+            <strong id="percentScore">
+                0%
+            </strong>
+            <span>Faiz</span>
+        </div>
 
-<div
-class="text-indigo-400 text-2xl font-black"
-id="openCorrect">
-0
-</div>
+    </div>
 
-<div class="text-xs text-slate-400">
-Açıq qəbul
-</div>
-
-</div>
-
-<div class="result-stat">
-
-<div
-class="text-rose-400 text-2xl font-black"
-id="wrongCount">
-0
-</div>
-
-<div class="text-xs text-slate-400">
-Səhv/boş
-</div>
-
-</div>
-
-</div>
-
-<p
-id="resComment"
-class="text-base font-semibold text-slate-200 italic mt-5 bg-slate-900/80 p-4 rounded-lg border border-slate-700">
-</p>
-
-<p
-id="memeResult"
-class="meme-result">
-</p>
-
-<button
-type="button"
-onclick="restartQuiz()"
-class="restart-btn mt-5 px-6 py-3 text-white rounded-xl font-bold transition">
-
-🔄 Yenidən başla
-
-</button>
+    <button
+        class="restart-btn"
+        onclick="restartQuiz()"
+    >
+        Yenidən başla
+    </button>
 
 </div>
 
+</div>
+
+
+<div class="watermark">
+© İ.S
 </div>
 
 
 <script>
 
-/* =========================================================
-   DÜZGÜN CAVABLAR
-========================================================= */
-
 const correctAnswers = {
 
     q1: "A",
-    q2: "B",
-    q3: "B",
+    q2: "E",
+    q3: "C",
     q4: "E",
+    q5: "A",
+    q6: "C",
+    q7: "B",
+    q8: "B",
+    q9: "E",
+    q10: "B",
 
-    /* Q5 DÜZƏLDİ */
-    q5: "C",
-
-    q6: "E",
-    q7: "D",
-    q8: "D",
-    q9: "A",
-    q10: "C",
-
-    q11: "E",
-    q12: "A",
-    q13: "E",
-    q14: "A",
-    q15: "C",
-
-    q21: "D",
-    q22: "A",
-    q23: "C",
-    q24: "C",
-    q25: "C"
+    q11: "C",
+    q12: "C",
+    q13: "C",
+    q14: "C",
+    q15: "B",
+    q16: "C",
+    q17: "A",
+    q18: "D",
+    q19: "C",
+    q20: "C"
 
 };
 
 
-/* =========================================================
-   AÇIQ SUALLAR
-========================================================= */
+const TOTAL_QUESTIONS = 20;
+const POINTS_PER_QUESTION = 2.5;
+const MAX_SCORE = 50;
 
-const openQuestionKeywords = {
+const HISTORY_KEY = "azDiliQuizHistory";
 
-    q16: [
-        "iv",
-        "v",
-        "4",
-        "5",
-        "isti",
-        "qar",
-        "soyuq"
-    ],
 
-    q17: [
-        "paltar",
-        "koynek",
-        "isti",
-        "rahatliq",
-        "tahir",
-        "ogul"
-    ],
-
-    q18: [
-        "zehmetkes",
-        "qaygikes",
-        "fedakar",
-        "sadelovh",
-        "bagli"
-    ],
-
-    q19: [
-        "davadir",
-        "goyden",
-        "od",
-        "yagir",
-        "tufengi",
-        "qelem"
-    ],
-
-    q20: [
-        "emosional",
-        "obrazli",
-        "mecaz",
-        "muharibe"
-    ],
-
-    q26: [
-        "hede",
-        "maddi",
-        "yardim",
-        "cetınlik",
-        "tehluk",
-        "tehluke"
-    ],
-
-    q27: [
-        "telebine",
-        "qaydalarina",
-        "qurulusuna",
-        "meheretle",
-        "ustaliqla",
-        "pesekarliqla"
-    ],
-
-    q28: [
-        "sahsenem",
-        "ssri",
-        "xalq artisti",
-        "tagiyev",
-        "hacibeyli",
-        "hacibeyov"
-    ],
-
-    q29: [
-        "unudulub",
-        "tarixde",
-        "sovket",
-        "mugenni",
-        "senet"
-    ],
-
-    q30: [
-        "aile",
-        "mekteb",
-        "usaq",
-        "tehsil",
-        "musiqi"
-    ]
-
-};
-
-
-/* =========================================================
-   NORMALİZASİYA
-========================================================= */
-
-function normalizeText(text) {
-
-    return text
-        .toLowerCase()
-        .trim()
-
-        .replace(/ə/g, "e")
-        .replace(/ı/g, "i")
-        .replace(/ö/g, "o")
-        .replace(/ü/g, "u")
-        .replace(/ş/g, "s")
-        .replace(/ç/g, "c")
-        .replace(/ğ/g, "g")
-
-        .replace(/[^a-z0-9\s]/gi, " ")
-
-        .replace(/\s+/g, " ");
-}
-
-
-/* =========================================================
-   AÇIQ SUAL YOXLAMASI
-========================================================= */
-
-function checkOpenQuestion(qNum) {
-
-    const input =
-        document.getElementById(qNum);
-
-    if (!input) {
-        return false;
-    }
-
-    const userText =
-        normalizeText(input.value);
-
-    if (userText.length < 2) {
-        return false;
-    }
-
-
-    /* Q16 */
-
-    if (qNum === "q16") {
-
-        const hasIV =
-            userText.includes("iv") ||
-            userText.includes("4");
-
-        const hasV =
-            userText.includes("v") ||
-            userText.includes("5");
-
-        const hasWeather =
-            userText.includes("isti") ||
-            userText.includes("qar") ||
-            userText.includes("soyuq");
-
-        return (
-            hasIV &&
-            hasV &&
-            hasWeather
-        );
-    }
-
-
-    /* Q17 */
-
-    if (qNum === "q17") {
-
-        const clothing =
-            userText.includes("paltar") ||
-            userText.includes("koynek");
-
-        const comfort =
-            userText.includes("isti") ||
-            userText.includes("rahatliq");
-
-        const son =
-            userText.includes("tahir") ||
-            userText.includes("ogul");
-
-        return (
-            (clothing && comfort) ||
-            (clothing && son) ||
-            (comfort && son)
-        );
-    }
-
-
-    /* Q18 */
-
-    if (qNum === "q18") {
-
-        const traits = [
-            "zehmetkes",
-            "qaygikes",
-            "fedakar",
-            "sadelovh",
-            "bagli"
-        ];
-
-        let matches = 0;
-
-        traits.forEach(trait => {
-
-            if (
-                userText.includes(trait)
-            ) {
-                matches++;
-            }
-
-        });
-
-        return matches >= 2;
-    }
-
-
-    /* Q19 */
-
-    if (qNum === "q19") {
-
-        const hasWar =
-            userText.includes("davadir") ||
-            userText.includes("dava");
-
-        const hasSky =
-            userText.includes("goyden");
-
-        const hasFire =
-            userText.includes("od") ||
-            userText.includes("yagir");
-
-        const hasGun =
-            userText.includes("tufengi");
-
-        const hasPen =
-            userText.includes("qelem");
-
-        return (
-            hasWar &&
-            hasSky &&
-            hasFire &&
-            hasGun &&
-            hasPen
-        );
-    }
-
-
-    /* Q20 */
-
-    if (qNum === "q20") {
-
-        const hasStyle =
-            userText.includes("emosional") ||
-            userText.includes("obrazli") ||
-            userText.includes("mecaz");
-
-        const hasWar =
-            userText.includes("muharibe") ||
-            userText.includes("dava");
-
-        return (
-            hasStyle &&
-            hasWar
-        );
-    }
-
-
-    /* Q26 */
-
-    if (qNum === "q26") {
-
-        const difficulty =
-            userText.includes("maddi") ||
-            userText.includes("yardim") ||
-            userText.includes("cetınlik");
-
-        const threat =
-            userText.includes("hede") ||
-            userText.includes("tehluk");
-
-        return (
-            difficulty &&
-            threat
-        );
-    }
-
-
-    /* Q27 */
-
-    if (qNum === "q27") {
-
-        const firstGroup =
-            userText.includes("telebine") ||
-            userText.includes("qaydalarina") ||
-            userText.includes("qurulusuna");
-
-        const secondGroup =
-            userText.includes("meheretle") ||
-            userText.includes("ustaliqla") ||
-            userText.includes("pesekarliqla");
-
-        return (
-            firstGroup &&
-            secondGroup
-        );
-    }
-
-
-    /* Q28 */
-
-    if (qNum === "q28") {
-
-        const groupOne =
-            userText.includes("sahsenem") ||
-            userText.includes("ssri") ||
-            userText.includes("xalq artisti");
-
-        const groupTwo =
-            userText.includes("tagiyev") ||
-            userText.includes("hacibeyli") ||
-            userText.includes("hacibeyov");
-
-        return (
-            groupOne &&
-            groupTwo
-        );
-    }
-
-
-    /* Q29 */
-
-    if (qNum === "q29") {
-
-        const forgotten =
-            userText.includes("unudulub");
-
-        const history =
-            userText.includes("tarixde") ||
-            userText.includes("sovket") ||
-            userText.includes("mugenni") ||
-            userText.includes("senet");
-
-        return (
-            forgotten &&
-            history
-        );
-    }
-
-
-    /* Q30 */
-
-    if (qNum === "q30") {
-
-        const factOne =
-            userText.includes("aile");
-
-        const factTwo =
-            userText.includes("mekteb") ||
-            userText.includes("tehsil") ||
-            userText.includes("usaq");
-
-        return (
-            factOne &&
-            factTwo
-        );
-    }
-
-
-    return false;
-}
-
-
-/* =========================================================
-   PROGRESS
-========================================================= */
+/* İRƏLİLƏYİŞ */
 
 function updateProgress() {
 
-    const answeredClosed =
-        document.querySelectorAll(
-            'input[type="radio"]:checked'
-        ).length;
+    let answered = 0;
 
-    let answeredOpen = 0;
+    for (let i = 1; i <= TOTAL_QUESTIONS; i++) {
 
-    Object.keys(openQuestionKeywords)
-        .forEach(qNum => {
+        const selected = document.querySelector(
+            `input[name="q${i}"]:checked`
+        );
 
-            const el =
-                document.getElementById(qNum);
+        if (selected) {
+            answered++;
+        }
 
-            if (
-                el &&
-                el.value.trim().length > 1
-            ) {
-
-                answeredOpen++;
-
-            }
-
-        });
-
-    const totalAnswered =
-        answeredClosed +
-        answeredOpen;
+    }
 
     const percentage =
-        Math.min(
-            100,
-            (totalAnswered / 30) * 100
-        );
+        (answered / TOTAL_QUESTIONS) * 100;
+
+    document.getElementById(
+        "progressText"
+    ).textContent =
+        `${answered} / ${TOTAL_QUESTIONS}`;
 
     document.getElementById(
         "progressBar"
     ).style.width =
-        percentage + "%";
+        `${percentage}%`;
 
-    document.getElementById(
-        "progressText"
-    ).innerText =
-        totalAnswered + " / 30";
 }
 
 
-/* =========================================================
-   EVENTLƏR
-========================================================= */
+/* HTML-DƏ TƏHLÜKƏSİZ MƏTN */
 
-document.addEventListener(
-    "change",
-    updateProgress
-);
+function escapeHTML(text) {
 
-document.addEventListener(
-    "input",
-    updateProgress
-);
+    const div =
+        document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+}
 
 
-/* =========================================================
-   NƏTİCƏ
-========================================================= */
+/* TARİXÇƏNİ GÖSTƏR */
 
-function calculateScore() {
+function renderHistory() {
 
-    const userName =
+    const historyList =
         document.getElementById(
-            "userName"
-        ).value.trim();
-
-
-    if (!userName) {
-
-        alert(
-            "👀 Ad-soyad yazmadan imtahana girmək olmaz.\n\nSistem səni tanımalıdır, insan."
+            "historyList"
         );
 
-        document
-            .getElementById("userName")
-            .focus();
+    if (!historyList) return;
+
+    let history = [];
+
+    try {
+
+        history =
+            JSON.parse(
+                localStorage.getItem(
+                    HISTORY_KEY
+                )
+            ) || [];
+
+    } catch (error) {
+
+        history = [];
+
+    }
+
+
+    history.sort(
+        (a,b) =>
+            (b.timestamp || 0) -
+            (a.timestamp || 0)
+    );
+
+
+    if (history.length === 0) {
+
+        historyList.innerHTML = `
+            <div class="no-history">
+                Hələ heç kim test etməyib.
+            </div>
+        `;
 
         return;
     }
 
 
-    let totalScore = 0;
-
-    let closedCorrectCount = 0;
-
-    let openCorrectCount = 0;
+    historyList.innerHTML = "";
 
 
-    /* =====================================================
-       QAPALI SUALLAR
-    ===================================================== */
+    history.forEach(
+        (person,index) => {
 
-    Object.keys(correctAnswers)
-        .forEach(qNum => {
+            const item =
+                document.createElement("div");
 
-            const correctAnswer =
-                correctAnswers[qNum];
+            item.className =
+                "history-item";
 
-            const selected =
-                document.querySelector(
-                    `input[name="${qNum}"]:checked`
-                );
+            item.innerHTML = `
 
-            const selectedValue =
-                selected
-                    ? selected.value
-                    : null;
+                <div class="history-number">
+                    ${index + 1}
+                </div>
+
+                <div class="history-name">
+                    👤 ${escapeHTML(
+                        person.name
+                    )}
+                </div>
+
+                <div class="history-result">
+                    🎯 ${person.score} / 50
+                    (${person.percentage}%)
+                </div>
+
+                <div class="history-date">
+                    📅 ${escapeHTML(
+                        person.date
+                    )}
+                </div>
+
+                <div class="history-time">
+                    🕐 ${escapeHTML(
+                        person.time
+                    )}
+                </div>
+
+            `;
+
+            historyList.appendChild(item);
+
+        }
+    );
+
+}
+
+
+/* TESTİ YOXLAMA */
+
+function calculateScore() {
+
+    const firstName =
+        document
+            .getElementById("firstName")
+            .value
+            .trim();
+
+    const lastName =
+        document
+            .getElementById("lastName")
+            .value
+            .trim();
+
+
+    if (!firstName || !lastName) {
+
+        alert(
+            "Zəhmət olmasa əvvəlcə ad və soyadınızı daxil edin."
+        );
+
+        if (!firstName) {
+
+            document
+                .getElementById("firstName")
+                .focus();
+
+        } else {
+
+            document
+                .getElementById("lastName")
+                .focus();
+
+        }
+
+        return;
+
+    }
+
+
+    let correctCount = 0;
+
+
+    for (
+        let i = 1;
+        i <= TOTAL_QUESTIONS;
+        i++
+    ) {
+
+        const selected =
+            document.querySelector(
+                `input[name="q${i}"]:checked`
+            );
+
+        const options =
+            document.querySelectorAll(
+                `input[name="q${i}"]`
+            );
+
+
+        options.forEach(input => {
+
+            const option =
+                input.closest(".option");
+
+            option.classList.remove(
+                "correct",
+                "wrong"
+            );
+
+        });
+
+
+        if (selected) {
+
+            const selectedOption =
+                selected.closest(".option");
 
 
             if (
-                selectedValue ===
-                correctAnswer
+                selected.value ===
+                correctAnswers[`q${i}`]
             ) {
 
-                totalScore += 2.5;
+                correctCount++;
 
-                closedCorrectCount++;
+                selectedOption.classList.add(
+                    "correct"
+                );
+
+            } else {
+
+                selectedOption.classList.add(
+                    "wrong"
+                );
+
+
+                options.forEach(input => {
+
+                    if (
+                        input.value ===
+                        correctAnswers[`q${i}`]
+                    ) {
+
+                        input
+                            .closest(".option")
+                            .classList.add(
+                                "correct"
+                            );
+
+                    }
+
+                });
 
             }
 
-
-            const options =
-                document.querySelectorAll(
-                    `input[name="${qNum}"]`
-                );
-
+        } else {
 
             options.forEach(input => {
 
-                const label =
-                    input.closest(".q-option");
-
-                if (!label) return;
-
-
-                label.classList.remove(
-                    "option-wrong",
-                    "option-correct"
-                );
-
-
                 if (
                     input.value ===
-                    correctAnswer
+                    correctAnswers[`q${i}`]
                 ) {
 
-                    label.classList.add(
-                        "option-correct"
-                    );
-
-                }
-
-
-                if (
-                    input.value ===
-                    selectedValue &&
-                    selectedValue !==
-                    correctAnswer
-                ) {
-
-                    label.classList.add(
-                        "option-wrong"
-                    );
+                    input
+                        .closest(".option")
+                        .classList.add(
+                            "correct"
+                        );
 
                 }
 
             });
 
-        });
+        }
 
-
-    /* =====================================================
-       AÇIQ SUALLAR
-    ===================================================== */
-
-    Object.keys(openQuestionKeywords)
-        .forEach(qNum => {
-
-            const correct =
-                checkOpenQuestion(qNum);
-
-
-            if (correct) {
-
-                totalScore += 5;
-
-                openCorrectCount++;
-
-            }
-
-
-            const stat =
-                document.getElementById(
-                    "user_stat_" + qNum
-                );
-
-
-            if (stat) {
-
-                if (correct) {
-
-                    stat.innerHTML = `
-                        <span class="text-emerald-400">
-                            ✅ Cavab qəbul olundu (+5 bal)
-                        </span>
-                    `;
-
-                } else {
-
-                    stat.innerHTML = `
-                        <span class="text-rose-400">
-                            ❌ Model cavabla kifayət qədər uyğunlaşmadı (0 bal)
-                        </span>
-                    `;
-
-                }
-
-            }
-
-        });
-
-
-    /* =====================================================
-       FINAL SCORE
-    ===================================================== */
-
-    const finalScore =
-        Math.min(
-            100,
-            Math.round(
-                totalScore * 10
-            ) / 10
-        );
-
-
-    const totalWrong =
-        30 -
-        closedCorrectCount -
-        openCorrectCount;
-
-
-    /* =====================================================
-       NƏTİCƏ ŞƏRHİ
-    ===================================================== */
-
-    let comment = "";
-    let emoji = "🏆";
-    let meme = "";
-
-
-    if (finalScore >= 90) {
-
-        emoji = "👑";
-
-        comment =
-            "Bu artıq nəticə deyil, Azərbaycan dili üzərində hakimiyyətdir.";
-
-        meme =
-            "🧠 Beyin: DİM məni gözləsin. Mən hazıram.";
-
-
-    } else if (finalScore >= 80) {
-
-        emoji = "🔥";
-
-        comment =
-            "Çox güclü nəticədir. Bir neçə detalı düzəltsən, lap yuxarı qalxırsan.";
-
-        meme =
-            "📚 Kitab: mən səni tanıyıram. 😭";
-
-
-    } else if (finalScore >= 65) {
-
-        emoji = "😎";
-
-        comment =
-            "Yaxşı nəticədir. Bir az daha diqqətli oxu və səhvləri ovla.";
-
-        meme =
-            "🧠 Beyin: bunu bilirdim... sadəcə işarələmədim.";
-
-
-    } else if (finalScore >= 40) {
-
-        emoji = "😐";
-
-        comment =
-            "Pis deyil, amma bəzi mövzular yenidən məşq istəyir.";
-
-        meme =
-            "📖 Dərslik səni görüb sakitcə rəfə qayıtdı.";
-
-
-    } else {
-
-        emoji = "💀";
-
-        comment =
-            "Bu nəticə göstərir ki, bəzi mövzulara yenidən qayıtmaq lazımdır.";
-
-        meme =
-            "🧠 Beyin: A seçdim. Niyə? Bilmirəm.";
-
-    }
-
-
-    /* =====================================================
-       RESULT UI
-    ===================================================== */
-
-    document.getElementById(
-        "resultEmoji"
-    ).innerText =
-        emoji;
-
-
-    document.getElementById(
-        "resUser"
-    ).innerText =
-        "👤 Tələbə: " + userName;
-
-
-    document.getElementById(
-        "resPoints"
-    ).innerText =
-        finalScore + " / 100";
-
-
-    document.getElementById(
-        "closedCorrect"
-    ).innerText =
-        closedCorrectCount + " / 20";
-
-
-    document.getElementById(
-        "openCorrect"
-    ).innerText =
-        openCorrectCount + " / 10";
-
-
-    document.getElementById(
-        "wrongCount"
-    ).innerText =
-        totalWrong;
-
-
-    document.getElementById(
-        "resComment"
-    ).innerText =
-        comment;
-
-
-    document.getElementById(
-        "memeResult"
-    ).innerText =
-        meme;
-
-
-    const modal =
-        document.getElementById(
-            "resultModal"
-        );
-
-    modal.classList.remove(
-        "hidden"
-    );
-
-
-    /* =====================================================
-       İZAHLARI GÖSTƏR
-    ===================================================== */
-
-    for (
-        let i = 1;
-        i <= 30;
-        i++
-    ) {
 
         const explanation =
             document.getElementById(
-                "exp" + i
+                `exp${i}`
             );
 
         if (explanation) {
 
-            explanation.style.display =
-                "block";
+            explanation.classList.add(
+                "show"
+            );
 
         }
 
     }
 
 
-    modal.scrollIntoView({
-        behavior: "smooth",
-        block: "center"
-    });
+    const score =
+        correctCount *
+        POINTS_PER_QUESTION;
+
+
+    const percentage =
+        (correctCount /
+        TOTAL_QUESTIONS) * 100;
+
+
+    const wrongCount =
+        TOTAL_QUESTIONS -
+        correctCount;
+
+
+    const now =
+        new Date();
+
+
+    const date =
+        now.toLocaleDateString(
+            "az-AZ"
+        );
+
+
+    const time =
+        now.toLocaleTimeString(
+            "az-AZ",
+            {
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit"
+            }
+        );
+
+
+    const fullName =
+        `${firstName} ${lastName}`;
+
+
+    /* NƏTİCƏ */
+
+    document.getElementById(
+        "participantNameResult"
+    ).textContent =
+        fullName;
+
+
+    document.getElementById(
+        "finalScore"
+    ).textContent =
+        `${score} / ${MAX_SCORE}`;
+
+
+    document.getElementById(
+        "closedCorrect"
+    ).textContent =
+        `${correctCount} / ${TOTAL_QUESTIONS}`;
+
+
+    document.getElementById(
+        "wrongCount"
+    ).textContent =
+        wrongCount;
+
+
+    document.getElementById(
+        "percentScore"
+    ).textContent =
+        `${Math.round(percentage)}%`;
+
+
+    let comment = "";
+
+
+    if (percentage >= 90) {
+
+        comment =
+            "Əla nəticə. Bu testdə qrammatika səni məğlub edə bilmədi.";
+
+    }
+
+    else if (percentage >= 80) {
+
+        comment =
+            "Çox yaxşı nəticə. Bir neçə səhvi düzəltməklə daha da yüksələ bilərsən.";
+
+    }
+
+    else if (percentage >= 65) {
+
+        comment =
+            "Pis deyil. Amma bəzi mövzuları bir az daha təkrar etmək lazımdır.";
+
+    }
+
+    else if (percentage >= 40) {
+
+        comment =
+            "Orta nəticədir. Qrammatika mövzularını yenidən işləmək faydalı olar.";
+
+    }
+
+    else {
+
+        comment =
+            "Bu dəfə qrammatika üstün gəldi. Mövzuları yenidən keçmək lazımdır.";
+
+    }
+
+
+    document.getElementById(
+        "resultComment"
+    ).textContent =
+        comment;
+
+
+    /* TARİXÇƏYƏ ƏLAVƏ ET */
+
+    let history = [];
+
+    try {
+
+        history =
+            JSON.parse(
+                localStorage.getItem(
+                    HISTORY_KEY
+                )
+            ) || [];
+
+    } catch (error) {
+
+        history = [];
+
+    }
+
+
+    const record = {
+
+        name: fullName,
+
+        correct: correctCount,
+
+        score: score,
+
+        percentage:
+            Math.round(percentage),
+
+        date: date,
+
+        time: time,
+
+        timestamp:
+            now.getTime()
+
+    };
+
+
+    history.unshift(record);
+
+
+    /* Son 100 nəticəni saxla */
+
+    history =
+        history.slice(0,100);
+
+
+    localStorage.setItem(
+        HISTORY_KEY,
+        JSON.stringify(history)
+    );
+
+
+    renderHistory();
+
+
+    /* MODALI AÇ */
+
+    document.getElementById(
+        "resultModal"
+    ).classList.add("show");
 
 }
 
 
-/* =========================================================
-   YENİDƏN BAŞLA
-========================================================= */
+/* YENİDƏN BAŞLA */
 
 function restartQuiz() {
 
-    const confirmed =
-        confirm(
-            "Bütün cavablar silinəcək.\n\nYenidən başlamağa əminsən?"
-        );
-
-
-    if (!confirmed) {
-        return;
-    }
+    document.getElementById(
+        "resultModal"
+    ).classList.remove("show");
 
 
     document
-        .getElementById("quizForm")
-        .reset();
+        .querySelectorAll(
+            'input[type="radio"]'
+        )
+        .forEach(input => {
+
+            input.checked = false;
+
+        });
 
 
     document
-        .getElementById("userName")
-        .value = "";
-
-
-    document
-        .getElementById("resultModal")
-        .classList.add("hidden");
-        document
-        .getElementById("progressBar")
-        .style.width =
-        "0%";
-
-
-    document
-        .getElementById("progressText")
-        .innerText =
-        "0 / 30";
-
-
-    document
-        .querySelectorAll(".q-option")
+        .querySelectorAll(".option")
         .forEach(option => {
 
             option.classList.remove(
-                "option-wrong",
-                "option-correct"
+                "correct",
+                "wrong"
             );
 
         });
 
 
     document
-        .querySelectorAll(
-            ".correct-answer-box"
-        )
-        .forEach(box => {
+        .querySelectorAll(".explanation")
+        .forEach(exp => {
 
-            box.style.display =
-                "none";
-
-        });
-
-
-    document
-        .querySelectorAll(
-            '[id^="user_stat_"]'
-        )
-        .forEach(stat => {
-
-            stat.innerHTML =
-                "";
+            exp.classList.remove(
+                "show"
+            );
 
         });
 
 
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
+    document.getElementById(
+        "progressBar"
+    ).style.width = "0%";
+
+
+    document.getElementById(
+        "progressText"
+    ).textContent =
+        "0 / 20";
+
+
+    document.getElementById(
+        "finalScore"
+    ).textContent =
+        "0 / 50";
+
+
+    document.getElementById(
+        "closedCorrect"
+    ).textContent =
+        "0 / 20";
+
+
+    document.getElementById(
+        "wrongCount"
+    ).textContent =
+        "20";
+
+
+    document.getElementById(
+        "percentScore"
+    ).textContent =
+        "0%";
+
+
+    document.getElementById(
+        "participantNameResult"
+    ).textContent = "";
 
 }
 
 
-/* =========================================================
-   RANDOM MEMELƏR
-========================================================= */
+/* SƏHİFƏ AÇILANDA TARİXÇƏNİ YÜKLƏ */
 
-const memeTexts = [
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
 
-    "📚 30 sual???",
+        renderHistory();
 
-    "😭 mən bunu bilirdim",
-
-    "🧠 A seç, qismət",
-
-    "☕ daha bir test",
-
-    "💀 2.5 bal üçün savaş",
-
-    "📖 müəllim görməsin",
-
-    "🤨 bu sual niyə belədir?",
-
-    "🔥 DİM MODE",
-
-    "😎 mən hazıram",
-
-    "🧠 düşünürəm...",
-
-    "😭 IV və V idi axı",
-
-    "📚 oxu, insan",
-
-    "💀 Qrammatika gəldi",
-
-    "🗿 cavabı hiss edirəm",
-
-    "🤡 səhv işarələdim",
-
-    "✍️ bir az da yazım",
-
-    "😭 açıq sual niyə açıqdır?",
-
-    "🧠 RAM doldu",
-
-    "📖 bu mövzu hardan çıxdı?",
-
-    "☕ beynə yanacaq lazımdır"
-
-];
-
-
-function createFloatingMeme() {
-
-    const meme =
-        document.createElement("div");
-
-    meme.className =
-        "meme";
-
-    meme.innerText =
-        memeTexts[
-            Math.floor(
-                Math.random() *
-                memeTexts.length
-            )
-        ];
-
-
-    meme.style.left =
-        Math.random() * 88 + "%";
-
-
-    meme.style.top =
-        Math.random() * 88 + "%";
-
-
-    meme.style.fontSize =
-        (14 + Math.random() * 10) +
-        "px";
-
-
-    meme.style.animationDuration =
-        (7 + Math.random() * 8) +
-        "s";
-
-
-    document.body.appendChild(
-        meme
-    );
-
-
-    setTimeout(() => {
-
-        meme.remove();
-
-    }, 15000);
-
-}
-
-
-/* =========================================================
-   MEMELƏRİ PERIODİK YARAT
-========================================================= */
-
-setInterval(
-    createFloatingMeme,
-    3500
+    }
 );
-
-
-/* İlk memelər */
-
-for (
-    let i = 0;
-    i < 5;
-    i++
-) {
-
-    setTimeout(
-        createFloatingMeme,
-        i * 600
-    );
-
-}
-
-
-/* =========================================================
-   BAŞLANĞIC
-========================================================= */
-
-updateProgress();
 
 </script>
 
